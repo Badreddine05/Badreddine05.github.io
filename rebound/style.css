@@ -412,6 +412,10 @@ main { display: block; padding-top: 24px; }
 }
 .actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .keys { max-width: 40ch; color: var(--ink-3); font-size: var(--t-sm); line-height: 1.45; }
+@media (min-width: 1000px) {
+  /* Beside the arena the column is narrow: the score gets its own row above the facts. */
+  .status { grid-template-columns: 1fr; }
+}
 @media (max-width: 999px) {
   .status { padding-top: 0; border-top: 0; }
   .keys { max-width: none; }
