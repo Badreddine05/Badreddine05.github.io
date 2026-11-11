@@ -60,7 +60,7 @@ node scripts/sync-games.mjs
 npm test
 ```
 
-Un jeu absent du lock n'est pas copié. L'accueil ne propose « Jouer » que pour les jeux intégrés.
+Sans OCaml local, le moteur de REBOUND peut venir de l'artefact `rebound-web` de sa CI, compilé depuis les mêmes sources : placer son `game.bc.js` dans `_build/default/web/main.bc.js`, puis lancer `node scripts/package.mjs` ; l'empreinte du lock vérifie qu'il s'agit du bon fichier. Un jeu absent du lock n'est pas copié. L'accueil ne propose « Jouer » que pour les jeux intégrés.
 
 ## Mettre à jour le CV
 

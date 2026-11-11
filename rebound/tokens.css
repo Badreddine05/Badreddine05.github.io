@@ -1,0 +1,181 @@
+/*
+ * Design tokens — Badreddine Channoufi
+ * Shared by the portfolio and the project applications.
+ * Fonts: Newsreader (serif), IBM Plex Sans, IBM Plex Mono — SIL OFL 1.1, see licenses/.
+ */
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("./fonts/newsreader-opsz.woff2") format("woff2-variations"), url("./fonts/newsreader-opsz.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("./fonts/newsreader-italic.woff2") format("woff2-variations"), url("./fonts/newsreader-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url("./fonts/plex-sans.woff2") format("woff2-variations"), url("./fonts/plex-sans.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/plex-mono-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("./fonts/plex-mono-500.woff2") format("woff2");
+}
+
+:root {
+  color-scheme: light;
+
+  /* Families */
+  --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  /* Paper and ink */
+  --paper: #fbfaf6;
+  --paper-2: #f3f1ea;
+  --paper-3: #e9e6dc;
+  --ink: #17160f;
+  --ink-2: #4b4840;
+  --ink-3: #6e6a60;
+  --rule: #dedad0;
+  --rule-2: #c9c4b7;
+  --marker: #fbe7a1;
+  --focus: #17160f;
+
+  /* Project accents (text-safe on --paper) */
+  --flow: #0b7a72;
+  --grid: #ad4d08;
+  --retail: #b8285a;
+  --neuro: #4d44c9;
+  --frog: #33782d;
+  --island: #1f5f9e;
+  --rebound: #806200;
+
+  /* Soft fills for areas and bands */
+  --flow-soft: #d4ebe7;
+  --grid-soft: #f5e2d0;
+  --retail-soft: #f4dbe4;
+  --neuro-soft: #e0def7;
+  --frog-soft: #dcebd5;
+  --island-soft: #dbe6f2;
+  --rebound-soft: #efe6c6;
+
+  /* Neutral data colours */
+  --data-ink: #17160f;
+  --data-muted: #a9a497;
+  --data-faint: #e4e0d6;
+
+  /* Type scale */
+  --t-xs: 0.75rem;     /* 12px labels */
+  --t-sm: 0.8125rem;   /* 13px captions */
+  --t-ui: 0.9375rem;   /* 15px interface */
+  --t-body: 1.1875rem; /* 19px reading */
+  --t-lead: clamp(1.25rem, 1.05rem + 0.8vw, 1.6rem);
+  --t-h3: 1.25rem;
+  --t-h2: clamp(1.6rem, 1.25rem + 1.3vw, 2.15rem);
+  --t-h1: clamp(2.5rem, 1.5rem + 4.2vw, 4.6rem);
+  --t-display: clamp(3rem, 1.4rem + 6.6vw, 7rem);
+
+  /* Space */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+  --s-9: 7rem;
+
+  --radius: 3px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 160ms;
+  --dur-2: 320ms;
+  --dur-3: 700ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #121211;
+    --paper-2: #1b1a18;
+    --paper-3: #26241f;
+    --ink: #eeebe3;
+    --ink-2: #b9b5aa;
+    --ink-3: #8f8b81;
+    --rule: #34322d;
+    --rule-2: #4a4740;
+    --marker: #4a3e12;
+    --focus: #eeebe3;
+    --flow: #43c2b3;
+    --grid: #f0a040;
+    --retail: #f27ba3;
+    --neuro: #9c93ff;
+    --frog: #86c96f;
+    --island: #6fa8e8;
+    --rebound: #d4c040;
+    --flow-soft: #15332f;
+    --grid-soft: #3a2711;
+    --retail-soft: #3b1a27;
+    --neuro-soft: #24214a;
+    --frog-soft: #1a2b17;
+    --island-soft: #15243a;
+    --rebound-soft: #2c2810;
+    --data-ink: #eeebe3;
+    --data-muted: #6f6b62;
+    --data-faint: #2c2a26;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #121211;
+  --paper-2: #1b1a18;
+  --paper-3: #26241f;
+  --ink: #eeebe3;
+  --ink-2: #b9b5aa;
+  --ink-3: #8f8b81;
+  --rule: #34322d;
+  --rule-2: #4a4740;
+  --marker: #4a3e12;
+  --focus: #eeebe3;
+  --flow: #43c2b3;
+  --grid: #f0a040;
+  --retail: #f27ba3;
+  --neuro: #9c93ff;
+  --frog: #86c96f;
+  --island: #6fa8e8;
+  --rebound: #d4c040;
+  --flow-soft: #15332f;
+  --grid-soft: #3a2711;
+  --retail-soft: #3b1a27;
+  --neuro-soft: #24214a;
+  --frog-soft: #1a2b17;
+  --island-soft: #15243a;
+  --rebound-soft: #2c2810;
+  --data-ink: #eeebe3;
+  --data-muted: #6f6b62;
+  --data-faint: #2c2a26;
+}

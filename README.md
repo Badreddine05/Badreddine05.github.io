@@ -39,7 +39,7 @@ Chaque étude de cas se lit comme un article de recherche : des figures numérot
 | --- | --- | --- |
 | Frogger : traverser une route puis une rivière, moteur Java compilé par TeaVM | [jouer](https://badreddine05.github.io/frogger/) | [Frogger](https://github.com/Badreddine05/Frogger) |
 | L'Île interdite : jeu coopératif de 2 à 4 joueurs, moteur Java compilé par TeaVM | [jouer](https://badreddine05.github.io/ile-interdite/) | [Projet-le-interdite-](https://github.com/Badreddine05/Projet-le-interdite-) |
-| REBOUND : casse-briques en OCaml, compilé avec js_of_ocaml | pas encore en ligne | [Casse-brique](https://github.com/Badreddine05/Projet-programmation-Fonctionnelle-avanc-e-Casse-brique) |
+| REBOUND : casse-briques en OCaml, compilé avec js_of_ocaml | [jouer](https://badreddine05.github.io/rebound/) | [Casse-brique](https://github.com/Badreddine05/Projet-programmation-Fonctionnelle-avanc-e-Casse-brique) |
 
 Dans chaque jeu, la page web utilise le moteur testé du projet, compilé en JavaScript. Les builds intégrés ici sont épinglés par `games.lock.json`, avec l'empreinte SHA-256 de chaque moteur compilé.
 

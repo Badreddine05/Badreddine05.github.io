@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="REBOUND">
+  <style>.c{color:#806200}@media (prefers-color-scheme: dark){.c{color:#d4c040}}</style>
+  <g class="c" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.5 20.5h1.8M10.15 20.5h3.7M18.7 20.5h1.8"/>
+    <path d="M4.5 3.5 12 16.5l5.2-9"/>
+    <circle cx="18.9" cy="4.6" r="2.3" fill="currentColor" stroke="none"/>
+  </g>
+</svg>

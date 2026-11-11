@@ -15,6 +15,14 @@
       "source": "web",
       "engine": "generated/engine.js",
       "sha256": "6cdf3cc437347e18b00ac512903541217e810a15fcbbc0241dc9f6fac209ba40"
+    },
+    {
+      "slug": "rebound",
+      "repository": "Badreddine05/Projet-programmation-Fonctionnelle-avanc-e-Casse-brique",
+      "commit": "8ae846b4e2ed75e37436a23622bf96829f142231",
+      "source": "dist",
+      "engine": "game.bc.js",
+      "sha256": "2e6271c2656ee13ab6adea7138f34a3645eb32b6345942a34c50abb585f307ba"
     }
   ]
 }
