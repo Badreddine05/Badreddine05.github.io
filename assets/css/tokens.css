@@ -68,12 +68,18 @@
   --grid: #ad4d08;
   --retail: #b8285a;
   --neuro: #4d44c9;
+  --frog: #33782d;
+  --island: #1f5f9e;
+  --rebound: #806200;
 
   /* Soft fills for areas and bands */
   --flow-soft: #d4ebe7;
   --grid-soft: #f5e2d0;
   --retail-soft: #f4dbe4;
   --neuro-soft: #e0def7;
+  --frog-soft: #dcebd5;
+  --island-soft: #dbe6f2;
+  --rebound-soft: #efe6c6;
 
   /* Neutral data colours */
   --data-ink: #17160f;
@@ -127,10 +133,16 @@
     --grid: #f0a040;
     --retail: #f27ba3;
     --neuro: #9c93ff;
+    --frog: #86c96f;
+    --island: #6fa8e8;
+    --rebound: #d4c040;
     --flow-soft: #15332f;
     --grid-soft: #3a2711;
     --retail-soft: #3b1a27;
     --neuro-soft: #24214a;
+    --frog-soft: #1a2b17;
+    --island-soft: #15243a;
+    --rebound-soft: #2c2810;
     --data-ink: #eeebe3;
     --data-muted: #6f6b62;
     --data-faint: #2c2a26;
@@ -153,10 +165,16 @@
   --grid: #f0a040;
   --retail: #f27ba3;
   --neuro: #9c93ff;
+  --frog: #86c96f;
+  --island: #6fa8e8;
+  --rebound: #d4c040;
   --flow-soft: #15332f;
   --grid-soft: #3a2711;
   --retail-soft: #3b1a27;
   --neuro-soft: #24214a;
+  --frog-soft: #1a2b17;
+  --island-soft: #15243a;
+  --rebound-soft: #2c2810;
   --data-ink: #eeebe3;
   --data-muted: #6f6b62;
   --data-faint: #2c2a26;

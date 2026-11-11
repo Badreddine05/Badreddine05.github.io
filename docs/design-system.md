@@ -1,6 +1,6 @@
 # Système graphique
 
-Ce document décrit l'identité commune au portfolio et aux applications des projets (FlowLens, GridPulse, RetailScope, NeuroLab). Les fichiers de référence sont dans `assets/` : `css/tokens.css`, `fonts/`, `brand/`.
+Ce document décrit l'identité commune au portfolio, aux applications des projets (FlowLens, GridPulse, RetailScope, NeuroLab) et aux jeux (Frogger, L'Île interdite, REBOUND). Les fichiers de référence sont dans `assets/` : `css/tokens.css`, `fonts/`, `brand/`.
 
 ## Principe
 
@@ -38,6 +38,9 @@ Toutes les couleurs passent par les variables de `tokens.css`. Le mode sombre es
 | `--grid` | `#ad4d08` | `#f0a040` | GridPulse |
 | `--retail` | `#b8285a` | `#f27ba3` | RetailScope |
 | `--neuro` | `#4d44c9` | `#9c93ff` | NeuroLab |
+| `--frog` | `#33782d` | `#86c96f` | Frogger |
+| `--island` | `#1f5f9e` | `#6fa8e8` | L'Île interdite |
+| `--rebound` | `#806200` | `#d4c040` | REBOUND |
 
 Chaque projet a une variante `--<projet>-soft` pour les aplats (bandes d'incertitude, surfaces). Dans une figure : l'accent du projet pour la série principale, `--ink` pour l'observé ou la référence, `--data-muted` pour le contexte. Le texte en couleur d'accent atteint au moins 4,5:1 sur `--paper`.
 
@@ -50,6 +53,9 @@ Chaque marque tient dans une grille de 24 unités, traits de 2 unités à bouts 
 - **GridPulse** : la courbe de consommation d'une journée d'hiver, avec la pointe du matin et celle du soir, posée sur une rangée de nœuds du réseau.
 - **RetailScope** : le triangle de cohortes. Chaque ligne est un mois d'arrivée, chaque colonne un mois plus tard, et l'opacité baisse avec la rétention.
 - **NeuroLab** : une tête vue de dessus et cinq électrodes. C3 et C4, au-dessus du cortex moteur, sont plus grosses.
+- **Frogger** : deux voies de circulation ouvertes au centre, la grenouille en bas et, en haut, une grenouille déjà installée entre deux refuges libres.
+- **L'Île interdite** : le profil en gradins des rangées de 2, 4 et 6 tuiles du plateau, au-dessus de l'eau.
+- **REBOUND** : le rebond de la balle sur la raquette à trois segments (40, 60 et 40) du mode Héritage.
 
 Taille minimale : 16 px. Espace libre autour d'une marque : un quart de sa taille. Le nom du projet s'écrit en IBM Plex Sans 600, à côté de la marque, interlettrage −0,01 em.
 
