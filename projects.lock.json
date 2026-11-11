@@ -3,17 +3,17 @@
     {
       "slug": "retailscope",
       "repository": "Badreddine05/retailscope",
-      "commit": "e2bf53de5241e7d230f9341817ee899a22c4d5a6"
+      "commit": "1aaea7f0e2cbfce3d5cc34c87dab4448d912174a"
     },
     {
       "slug": "gridpulse",
       "repository": "Badreddine05/gridpulse",
-      "commit": "c4834af28a918158d76449e9fbf25013fea8511d"
+      "commit": "a01ed5ed1484f9f0838958a6658dc357a33418bd"
     },
     {
       "slug": "flowlens",
       "repository": "Badreddine05/flowlens",
-      "commit": "9e9981ee1be45a9faa2879ab9b4c955672f98fa5"
+      "commit": "369c2876cb9160b8d0cd1aa17ed4ec66d418cb90"
     }
   ]
 }

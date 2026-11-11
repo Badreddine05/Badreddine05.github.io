@@ -3,17 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b1118" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content="#fbfaf6"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#121211"
+      media="(prefers-color-scheme: dark)"
+    />
+    <script>
+      (function () {
+        var theme = null;
+        try {
+          theme = localStorage.getItem("bc-theme");
+        } catch (error) {}
+        var metas = document.querySelectorAll('meta[name="theme-color"]');
+        var color = null;
+        for (var i = 0; i < metas.length; i++) {
+          var content = metas[i].getAttribute("content");
+          metas[i].setAttribute("data-default", content);
+          if ((metas[i].getAttribute("media") || "").indexOf(theme) > -1) {
+            color = content;
+          }
+        }
+        if (theme !== "light" && theme !== "dark") return;
+        document.documentElement.setAttribute("data-theme", theme);
+        for (var j = 0; j < metas.length; j++) {
+          if (color) metas[j].setAttribute("content", color);
+        }
+      })();
+    </script>
     <meta
       name="description"
-      content="GridPulse, un observatoire interactif de l'électricité française : données RTE, mix de production et prévisions évaluées sur une période historique."
+      content="Consommation et production d'électricité en France, 2023–2024, d'après les données publiques RTE éCO2mix, avec une prévision à 24 heures évaluée sur novembre et décembre 2024."
     />
-    <title>GridPulse — L'électricité, en perspective</title>
+    <title>GridPulse · électricité française 2023–2024</title>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <script type="module" crossorigin src="./assets/index-DrdE4XwQ.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CrE_h03-.css">
+    <script type="module" crossorigin src="./assets/index-Es4jJRT6.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Cehz3TVC.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
   </body>
 </html>

@@ -1,1 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#153e3b"/><path d="M16 44V30h8v14zm12 0V20h8v24zm12 0V12h8v32z" fill="#f9a76b"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="RetailScope">
+  <style>.c{color:#b8285a}@media (prefers-color-scheme: dark){.c{color:#f27ba3}}</style>
+  <g class="c" fill="currentColor">
+    <rect x="2.5" y="2.5" width="4.5" height="4.5" rx="1"/>
+    <rect x="8" y="2.5" width="4.5" height="4.5" rx="1" opacity=".7"/>
+    <rect x="13.5" y="2.5" width="4.5" height="4.5" rx="1" opacity=".45"/>
+    <rect x="19" y="2.5" width="4.5" height="4.5" rx="1" opacity=".22"/>
+    <rect x="2.5" y="8" width="4.5" height="4.5" rx="1"/>
+    <rect x="8" y="8" width="4.5" height="4.5" rx="1" opacity=".7"/>
+    <rect x="13.5" y="8" width="4.5" height="4.5" rx="1" opacity=".45"/>
+    <rect x="2.5" y="13.5" width="4.5" height="4.5" rx="1"/>
+    <rect x="8" y="13.5" width="4.5" height="4.5" rx="1" opacity=".7"/>
+    <rect x="2.5" y="19" width="4.5" height="4.5" rx="1"/>
+  </g>
+</svg>
