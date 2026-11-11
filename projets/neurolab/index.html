@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeuroLab · lire un mouvement imaginé dans un signal EEG</title>
+<meta name="description" content="Étude de cas NeuroLab : imagerie motrice sur BCI Competition IV 2a, sessions d'apprentissage et de test séparées, puissance spectrale et CSP avec LDA.">
+<meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NeuroLab · lire un mouvement imaginé dans un signal EEG">
+<meta property="og:description" content="Quatre mouvements imaginés, 22 électrodes, neuf participants : ce qu'un classifieur reconnaît vraiment sur une nouvelle session.">
+<meta property="og:url" content="https://badreddine05.github.io/projets/neurolab/">
+<meta property="og:image" content="https://badreddine05.github.io/assets/og/neurolab.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://badreddine05.github.io/projets/neurolab/">
+<link rel="icon" href="../../assets/brand/neurolab.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/newsreader-opsz.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/article.css">
+<script>try{var t=localStorage.getItem('bc-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.style.setProperty('--dot','var(--neuro)')</script>
+<script type="module" src="../../assets/js/site.js"></script>
+<script type="module" src="../../assets/js/figs/neurolab.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="../../" aria-label="Badreddine Channoufi, accueil">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke-width="3" stroke-linecap="round"><path class="ink" d="M8 4.5V27.5"/><path class="ink" d="M21.95 14.15A8 8 0 1 0 21.95 24.85"/></g><circle class="dot" cx="24" cy="19.5" r="2.4"/></svg>
+      <span class="brand__name">Badreddine Channoufi</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="../../#projets" aria-current="page">Projets</a>
+      <a href="../../#parcours">Parcours</a>
+      <a href="../../cv.html">CV</a>
+      <a href="../../#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path class="half" d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+  </div>
+</header>
+
+<main id="main" class="article" style="--accent: var(--neuro); --accent-soft: var(--neuro-soft)">
+  <header class="a-title d-grid">
+    <p class="a-crumb"><a href="../../#projets">Projets</a> · 04</p>
+    <p class="a-kicker"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13.2" r="8.4"/><path d="M10 5.05 12 2.6l2 2.45"/><g fill="currentColor" stroke="none"><circle cx="7.6" cy="13.2" r="1.7"/><circle cx="16.4" cy="13.2" r="1.7"/><circle cx="12" cy="13.2" r="1.15"/><circle cx="12" cy="8.9" r="1.15"/><circle cx="12" cy="17.5" r="1.15"/></g></svg>NeuroLab</p>
+    <h1>Lire un mouvement imaginé dans un signal EEG</h1>
+    <p class="a-dek">Quand on imagine bouger la main gauche, un rythme cérébral faiblit au-dessus de l'hémisphère droit. NeuroLab apprend à reconnaître ces traces sur 22 électrodes, pour quatre mouvements imaginés, puis mesure ce qui en reste sur une session enregistrée un autre jour.</p>
+  </header>
+
+  <div class="d-grid">
+    <figure class="fig fig--hero l-page" id="figure-1" data-fig="pipeline">
+      <div class="fig__head">
+        <div><p class="fig__title">Du signal à la décision, un essai après l'autre</p><p class="fig__sub">Illustration avec des signaux synthétiques ; les fréquences de décision sont réelles</p></div>
+        <div class="fig__controls"></div>
+      </div>
+      <div class="fig__plot"></div>
+      <div class="readout" data-readout></div>
+      <figcaption><span class="fig__num">Figure 1.</span>Une flèche indique le mouvement à imaginer, comme dans l'expérience réelle. Le rythme à 10 Hz faiblit sur l'électrode du côté opposé, la puissance du signal filtré baisse, puis le classifieur choisit une classe. Les signaux sont simulés ; la prédiction est tirée de la matrice de confusion réelle de CSP + LDA sur la session de test, ce qui explique les erreurs. Choisissez un mouvement pour lancer un essai.</figcaption>
+    </figure>
+
+    <dl class="a-byline l-page">
+      <div><dt>Équipe d'origine</dt><dd>James Camilleri, Badreddine Channoufi, Adam Sekkat, Victor Robert-Lambrecht</dd></div>
+      <div><dt>Reprise</dt><dd>Évaluation par session, pipeline reproductible, visualisations</dd></div>
+      <div><dt>Outils</dt><dd>Python, NumPy, SciPy, scikit-learn, D3</dd></div>
+      <div><dt>Données</dt><dd>BCI Competition IV 2a (BNCI 2014-001), <a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND 4.0</a></dd></div>
+      <div class="a-byline__links"><a class="btn btn--primary" href="https://github.com/Badreddine05/BCI">Code source</a></div>
+    </dl>
+  </div>
+
+  <article class="a-body d-grid">
+    <p>Une interface cerveau-ordinateur cherche à reconnaître une intention dans l'activité électrique du cerveau, mesurée par des électrodes posées sur le cuir chevelu : c'est l'électroencéphalographie, ou EEG. L'imagerie motrice en est l'exemple classique. Imaginer un mouvement, sans le faire, modifie des rythmes mesurables au-dessus du cortex moteur.</p>
+    <p>NeuroLab est né d'un projet d'équipe en master, mené avec James Camilleri, Adam Sekkat et Victor Robert-Lambrecht. Je l'ai repris pour l'évaluer correctement : séparer strictement les sessions d'apprentissage et de test, supprimer les fuites de prétraitement du notebook d'origine et publier des résultats reproductibles.<span class="note">Le notebook et le rapport d'origine restent dans le dépôt. Leurs scores, obtenus avec un autre protocole, ne sont pas comparables à ceux de cette page.</span></p>
+
+    <h2>Ce que l'on cherche dans le signal</h2>
+    <p>Au repos, les neurones du cortex moteur oscillent ensemble autour de 10 Hz : c'est le rythme mu. Quand on imagine bouger la main gauche, ce rythme faiblit au-dessus de l'hémisphère droit, près de l'électrode C4. Pour la main droite, c'est l'inverse, près de C3. On parle de désynchronisation. Les pieds et la langue laissent des traces plus centrales ou plus diffuses, plus difficiles à distinguer.</p>
+
+    <figure class="fig fig--middle" id="figure-2" data-fig="mu">
+      <div class="fig__head">
+        <div><p class="fig__title">Le rythme mu au-dessus des deux hémisphères</p><p class="fig__sub">Signaux synthétiques, filtrés entre 8 et 30 Hz</p></div>
+        <div class="fig__controls"></div>
+      </div>
+      <div class="fig__plot"></div>
+      <div class="readout" data-readout></div>
+      <figcaption><span class="fig__num">Figure 2.</span>Schéma simplifié : l'amplitude et la baisse de puissance sont choisies pour être lisibles, pas mesurées. Sur de vrais enregistrements, l'effet est bien plus faible que le bruit d'un essai à l'autre.</figcaption>
+    </figure>
+
+    <p>Sur de vrais enregistrements, cet effet est faible, varie d'une personne à l'autre et se noie dans le bruit des clignements d'yeux et des contractions musculaires, alors que le classifieur doit le reconnaître essai par essai.<span class="note">Les signaux montrés sur cette page sont synthétiques. Les enregistrements réels sont sous licence CC BY-ND : le dépôt n'en republie aucune version modifiée et les télécharge chez le fournisseur.</span></p>
+
+    <h2>Le protocole</h2>
+    <p>Le jeu BCI Competition IV 2a réunit neuf participants, enregistrés avec 22 électrodes à 250 Hz. À chaque essai, une flèche à l'écran indique l'un des quatre mouvements à imaginer : main gauche, main droite, pieds ou langue. Chaque participant a passé deux sessions, à des jours différents, de 288 essais chacune.</p>
+
+    <figure class="fig" id="figure-3" data-fig="protocol">
+      <div class="fig__plot"></div>
+      <figcaption><span class="fig__num">Figure 3.</span>Déroulé d'un essai, et séparation entre les deux sessions. Le signal est filtré entre 8 et 30 Hz (Butterworth d'ordre 4, phase nulle, essai par essai) sur la fenêtre de 2 à 6 secondes.</figcaption>
+    </figure>
+
+    <p>Tout ce qui apprend, les filtres spatiaux comme le classifieur, ne voit que la session T. La session E, enregistrée un autre jour, sert uniquement à mesurer. C'est plus exigeant qu'un mélange aléatoire des essais, et plus proche d'un usage réel : entre deux séances, le casque est retiré puis remis, et la personne n'est plus dans le même état.<span class="note">Tous les essais étiquetés sont gardés, y compris les 488 essais sur 5 184 (9,4 %) que le fournisseur signale comme contenant des artefacts.</span></p>
+
+    <h2>Deux méthodes et une référence</h2>
+    <ul>
+      <li><strong>Référence</strong> : prédire toujours la même classe. Avec quatre classes équilibrées, cela donne 25 %, le niveau du hasard.</li>
+      <li><strong>Puissance spectrale + LDA</strong> : mesurer la puissance du signal dans des bandes de fréquence, électrode par électrode, puis séparer les classes avec une analyse discriminante linéaire.</li>
+      <li><strong>CSP + LDA</strong> : apprendre des combinaisons d'électrodes (des filtres spatiaux) qui maximisent la différence de variance entre une classe et les autres, deux filtres par classe, puis appliquer la même analyse discriminante.</li>
+    </ul>
+    <p>Les réglages sont fixés à l'avance, sans recherche d'hyperparamètres ni sélection de modèle sur la session de test. Ce choix coûte peut-être quelques points, mais chaque score mesure vraiment la méthode.</p>
+
+    <h2>Résultats</h2>
+    <dl class="a-stats">
+      <div><dd class="num">25,0<small>%</small></dd><dt>référence, classe majoritaire</dt></div>
+      <div><dd class="num">54,1<small>%</small></dd><dt>puissance spectrale + LDA</dt></div>
+      <div class="is-accent"><dd class="num">58,1<small>%</small></dd><dt>CSP + LDA</dt></div>
+      <div><dd class="num">0,44</dd><dt>κ de Cohen pour CSP + LDA</dt></div>
+    </dl>
+    <p>En moyenne sur les neuf participants, CSP + LDA atteint 58,1 % de précision équilibrée sur la session de test, contre 54,1 % pour la puissance spectrale. Il fait mieux pour sept participants, aussi bien pour un, et moins bien pour un autre. La moyenne cache surtout des écarts considérables (figure 4).</p>
+
+    <figure class="fig" id="figure-4" data-fig="participants">
+      <div class="fig__head">
+        <div><p class="fig__title">Précision équilibrée de chaque participant</p><p class="fig__sub">Session de test, jamais vue à l'apprentissage</p></div>
+        <div class="fig__controls"></div>
+      </div>
+      <div class="fig__plot"></div>
+      <div class="readout" data-legend></div>
+      <figcaption><span class="fig__num">Figure 4.</span>Le cercle vide est la puissance spectrale, le point plein CSP. Survolez une ligne pour lire les scores et le κ de Cohen.</figcaption>
+    </figure>
+
+    <p>Chez les participants 3, 8 et 9, CSP dépasse 70 % de bonnes réponses, jusqu'à 77,1 %. Le participant 5, lui, reste à 34 %, à peine au-dessus du hasard, quelle que soit la méthode. Cette variabilité entre personnes est un problème connu des interfaces cerveau-ordinateur, et une moyenne seule la cache.</p>
+
+    <figure class="fig" id="figure-5" data-fig="confusion">
+      <div class="fig__head">
+        <div><p class="fig__title">Où se font les erreurs</p><p class="fig__sub">Part des essais de chaque classe réelle attribués à chaque classe prédite</p></div>
+        <div class="fig__controls"></div>
+      </div>
+      <div class="fig__plot"></div>
+      <div class="readout" data-readout></div>
+      <figcaption><span class="fig__num">Figure 5.</span>Matrice de confusion sur la session de test. La diagonale contient les bonnes réponses ; le rappel est la part des essais d'une classe correctement reconnus.</figcaption>
+    </figure>
+
+    <p>Avec CSP, la langue est la classe la mieux reconnue (63 %) et les pieds la moins bien (51 %). Plus d'un essai « pieds » sur quatre est pris pour la langue : ce sont les deux mouvements dont les traces sont les moins latéralisées, au centre pour les pieds, des deux côtés pour la langue. Main gauche et main droite tournent autour de 59 %, avec des confusions surtout entre elles.</p>
+
+    <h2>Ce que ces résultats ne disent pas</h2>
+    <ul>
+      <li>Ils mesurent une nouvelle session d'une personne déjà vue. Ils ne disent rien de la reconnaissance chez une personne inconnue du modèle.</li>
+      <li>Le système ne lit pas la pensée : il distingue quatre mouvements imaginés, en laboratoire, après une phase d'apprentissage.</li>
+      <li>Aucune validité clinique n'est revendiquée.</li>
+    </ul>
+  </article>
+
+  <footer class="a-appendix d-grid">
+    <section>
+      <h2>Reproduire</h2>
+      <div>
+        <p>Python 3.13. Le téléchargement des 18 fichiers originaux représente environ 780 Mo ; leurs empreintes SHA-256 sont vérifiées.</p>
+        <pre><code>python -m pip install -e ".[test]"
+bci-lab --download
+python -m pytest</code></pre>
+        <p>Le rapport produit, <code>web/data/benchmark.json</code>, contient tous les scores de cette page, le protocole et la provenance de chaque fichier.</p>
+      </div>
+    </section>
+    <section>
+      <h2>Méthode</h2>
+      <p>Filtre passe-bande 8-30 Hz, Butterworth d'ordre 4 à phase nulle, appliqué essai par essai. CSP en un-contre-tous, deux filtres par classe, covariance régularisée (shrinkage 0,1). Précision équilibrée, κ de Cohen et matrices de confusion calculés sur la session E uniquement.</p>
+    </section>
+    <section>
+      <h2>Sources</h2>
+      <p>BNCI Horizon 2020, <a href="https://bnci-horizon-2020.eu/database/data-sets">jeu 001-2014</a> (BCI Competition IV 2a), sous licence CC BY-ND 4.0. Tangermann, M. et al. (2012). Review of the BCI Competition IV. <em>Frontiers in Neuroscience</em>, 6, 55. <a href="https://doi.org/10.3389/fnins.2012.00055">doi:10.3389/fnins.2012.00055</a>.</p>
+    </section>
+    <section>
+      <h2>Crédits</h2>
+      <p>Projet universitaire de James Camilleri, Badreddine Channoufi, Adam Sekkat et Victor Robert-Lambrecht. Reprise et réévaluation par Badreddine Channoufi, avec l'aide d'outils d'IA ; les choix de méthode et les tests sont documentés dans le dépôt.</p>
+    </section>
+  </footer>
+
+  <nav class="a-next d-grid" aria-label="Retour aux projets">
+    <a href="../retailscope/" style="--next: var(--retail)"><span>Projet suivant</span><strong><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="2.5" y="2.5" width="4.5" height="4.5" rx="1"/><rect x="8" y="2.5" width="4.5" height="4.5" rx="1" opacity=".7"/><rect x="13.5" y="2.5" width="4.5" height="4.5" rx="1" opacity=".45"/><rect x="19" y="2.5" width="4.5" height="4.5" rx="1" opacity=".22"/><rect x="2.5" y="8" width="4.5" height="4.5" rx="1"/><rect x="8" y="8" width="4.5" height="4.5" rx="1" opacity=".7"/><rect x="13.5" y="8" width="4.5" height="4.5" rx="1" opacity=".45"/><rect x="2.5" y="13.5" width="4.5" height="4.5" rx="1"/><rect x="8" y="13.5" width="4.5" height="4.5" rx="1" opacity=".7"/><rect x="2.5" y="19" width="4.5" height="4.5" rx="1"/></svg>RetailScope, ce qui fait revenir les clients</strong></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <span>© 2026 Badreddine Channoufi</span>
+    <span>Données BNCI 2014-001, CC BY-ND 4.0. <a href="https://github.com/Badreddine05/BCI">Code du projet</a></span>
+  </div>
+</footer>
+</body>
+</html>

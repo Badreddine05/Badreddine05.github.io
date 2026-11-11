@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FlowLens · suivre 31 509 demandes de prêt, étape par étape</title>
+<meta name="description" content="Étude de cas FlowLens : process mining sur le journal BPI Challenge 2017, parcours réels, durées, retours en vérification et scénarios explicites.">
+<meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FlowLens · suivre 31 509 demandes de prêt, étape par étape">
+<meta property="og:description" content="Process mining sur un journal d'événements public : chemins réels, durées et retours en arrière.">
+<meta property="og:url" content="https://badreddine05.github.io/projets/flowlens/">
+<meta property="og:image" content="https://badreddine05.github.io/assets/og/flowlens.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://badreddine05.github.io/projets/flowlens/">
+<link rel="icon" href="../../assets/brand/flowlens.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/newsreader-opsz.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/article.css">
+<script>try{var t=localStorage.getItem('bc-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.style.setProperty('--dot','var(--flow)')</script>
+<script type="module" src="../../assets/js/site.js"></script>
+<script type="module" src="../../assets/js/figs/flowlens.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="../../" aria-label="Badreddine Channoufi, accueil">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke-width="3" stroke-linecap="round"><path class="ink" d="M8 4.5V27.5"/><path class="ink" d="M21.95 14.15A8 8 0 1 0 21.95 24.85"/></g><circle class="dot" cx="24" cy="19.5" r="2.4"/></svg>
+      <span class="brand__name">Badreddine Channoufi</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="../../#projets" aria-current="page">Projets</a>
+      <a href="../../#parcours">Parcours</a>
+      <a href="../../cv.html">CV</a>
+      <a href="../../#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path class="half" d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+  </div>
+</header>
+
+<main id="main" class="article" style="--accent: var(--flow); --accent-soft: var(--flow-soft)">
+  <header class="a-title d-grid">
+    <p class="a-crumb"><a href="../../#projets">Projets</a> · 03</p>
+    <p class="a-kicker"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12H6"/><path d="M6 12C8 7.6 9.8 6 12 6s4 1.6 6 6"/><path d="M6 12c2 4.4 3.8 6 6 6s4-1.6 6-6"/><path d="M18 12h3.5"/><circle cx="12" cy="6" r="2.3" fill="currentColor" stroke="none"/></svg>FlowLens</p>
+    <h1>Suivre 31 509 demandes de prêt, étape par étape</h1>
+    <p class="a-dek">FlowLens reconstitue le parcours de chaque demande de crédit d'une banque néerlandaise à partir de son journal d'événements. On y voit quels chemins les dossiers suivent vraiment, et où le temps s'accumule.</p>
+  </header>
+
+  <div class="d-grid">
+    <figure class="fig fig--hero l-page" id="figure-1" data-fig="map">
+      <div class="fig__head">
+        <div><p class="fig__title">Les étapes d'une demande et les passages de l'une à l'autre</p><p class="fig__sub">BPI Challenge 2017, toutes les demandes de l'année 2016</p></div>
+        <div class="fig__controls"></div>
+      </div>
+      <div class="fig__plot"></div>
+      <figcaption><span class="fig__num">Figure 1.</span>Les dix états d'une demande et les 21 transitions observées entre eux. L'épaisseur d'un trait suit le nombre de passages, et les points qui circulent sont tirés en proportion de ces passages. Leur vitesse ne représente pas la durée réelle. Survolez une étape pour isoler ses transitions.</figcaption>
+    </figure>
+
+    <dl class="a-byline l-page">
+      <div><dt>Auteur</dt><dd>Badreddine Channoufi</dd></div>
+      <div><dt>Travail</dt><dd>Lecture du journal XES, modèle SQLite, indicateurs, application</dd></div>
+      <div><dt>Outils</dt><dd>Python (bibliothèque standard), SQLite, SQL, React, SVG</dd></div>
+      <div><dt>Données</dt><dd>BPI Challenge 2017, <a href="https://doi.org/10.4121/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b">4TU.ResearchData</a>, usage non commercial</dd></div>
+      <div class="a-byline__links"><a class="btn btn--primary" href="../../flowlens/">Ouvrir l'application</a><a class="btn" href="https://github.com/Badreddine05/flowlens">Code source</a></div>
+    </dl>
+  </div>
+
+  <article class="a-body d-grid">
+    <p>Le process mining part d'un constat simple : les logiciels métier enregistrent chaque action avec son horodatage. En recousant ces traces dossier par dossier, on retrouve le processus tel qu'il se déroule vraiment, avec ses détours et ses retours en arrière.</p>
+    <p>Le BPI Challenge 2017 est un jeu de données public, publié pour ce genre d'analyse. Il contient 1 202 267 événements sur 31 509 demandes de prêt déposées en 2016 auprès d'une banque néerlandaise. Le pipeline Python télécharge le fichier XES officiel, vérifie son empreinte, puis ne garde que les états de la demande elle-même : 239 595 événements, répartis entre dix états.<span class="note">Les activités liées aux offres et aux tâches des employés sont écartées. La carte y gagne en lisibilité, mais on ne peut plus étudier la charge de travail.</span></p>
+
+    <h2>Le chemin le plus fréquent finit par une annulation</h2>
+    <p>Les 31 509 demandes suivent 102 enchaînements d'états différents. Les dix plus fréquents couvrent 77,8 % des dossiers.</p>
+
+    <figure class="fig" id="figure-2" data-fig="variants">
+      <div class="fig__head"><div><p class="fig__title">Les dix parcours les plus fréquents</p><p class="fig__sub">Une ligne par parcours, une case par étape</p></div></div>
+      <div class="fig__plot"></div>
+      <div class="readout" data-legend></div>
+      <figcaption><span class="fig__num">Figure 2.</span>La durée médiane est calculée sur les dossiers terminés de chaque parcours. Survolez une case pour lire le nom de l'étape.</figcaption>
+    </figure>
+
+    <p>Le premier parcours rassemble à lui seul 6 840 dossiers, soit 21,7 % : la demande est créée, préparée, jugée recevable, complétée, puis annulée, avec une durée médiane de 32 jours. Les parcours qui aboutissent à un financement passent tous par la vérification, souvent plusieurs fois, avec des allers-retours vers les pièces manquantes.</p>
+
+    <h2>Combien de temps dure une demande</h2>
+    <p>Pour les 31 411 demandes dont l'issue est connue, la durée médiane entre la première et la dernière étape est de 19,1 jours, et une sur dix dépasse 35 jours. Ces deux chiffres mélangent pourtant des dossiers aux issues très différentes.</p>
+
+    <figure class="fig" id="figure-3" data-fig="durations">
+      <div class="fig__head">
+        <div><p class="fig__title">Durée des demandes terminées</p><p class="fig__sub">Nombre de dossiers par tranche d'un jour</p></div>
+        <div class="fig__controls"></div>
+      </div>
+      <div class="fig__plot"></div>
+      <div class="readout" data-readout></div>
+      <div class="readout" data-legend></div>
+      <figcaption><span class="fig__num">Figure 3.</span>Durée calendaire entre le premier et le dernier état observé. La dernière barre regroupe les dossiers de 60 jours et plus.</figcaption>
+    </figure>
+
+    <p>Les demandes financées ou refusées se règlent en deux semaines environ, avec des médianes de 14,8 et 14,1 jours. Les annulations forment un pic très net autour de 30 jours, et la moitié dure plus de 31,6 jours. Le journal ne dit pas pourquoi. Un délai de réponse au-delà duquel l'offre tombe serait une explication plausible, à vérifier avec les équipes métier.<span class="note">Les 98 dossiers encore ouverts à la fin du journal sont exclus des durées. Les demandes de fin d'année restent un peu biaisées : les plus longues n'ont pas eu le temps de se terminer.</span></p>
+
+    <h2>Où le temps s'accumule</h2>
+    <p>En additionnant, pour chaque dossier, le temps écoulé entre une étape et la suivante, on voit où passent les jours.</p>
+
+    <figure class="fig fig--text" id="figure-4" data-fig="time">
+      <div class="fig__head"><div><p class="fig__title">Part du temps cumulé, selon l'étape qui précède</p></div></div>
+      <div class="fig__plot"></div>
+      <figcaption><span class="fig__num">Figure 4.</span>Somme, sur tous les dossiers terminés, des intervalles qui suivent chaque étape. Ce temps mélange attente et travail.</figcaption>
+    </figure>
+
+    <p>70 % du temps cumulé s'écoule après « dossier complet ». Dans ce processus, cette étape précède le renvoi de l'offre signée par le client : une bonne partie de ce temps est donc de l'attente, que le journal ne distingue pas du travail. Les allers-retours entre vérification et pièces manquantes pèsent pour 23 %.</p>
+
+    <h2>Plus de vérifications, mais des dossiers plus courts</h2>
+    <p>11 669 dossiers passent plusieurs fois par la vérification. On s'attendrait à ce que ces allers-retours allongent les délais. Leur durée médiane est pourtant plus courte : 16,9 jours, contre 23,0 jours pour les autres.</p>
+
+    <figure class="fig fig--text" id="figure-5" data-fig="rework">
+      <div class="fig__head"><div><p class="fig__title">Issue des dossiers, selon le nombre de vérifications</p></div></div>
+      <div class="fig__plot"></div>
+      <div class="readout" data-legend></div>
+      <figcaption><span class="fig__num">Figure 5.</span>Dossiers terminés uniquement. Survolez une barre pour lire les effectifs.</figcaption>
+    </figure>
+
+    <p>La figure 5 explique ce paradoxe. Les dossiers vérifiés plusieurs fois sont presque tous financés (87 %) et très rarement annulés (3 %). À l'inverse, plus de la moitié des autres finissent annulés, après les longues attentes vues plus haut. Comparer les durées sans regarder l'issue mélange donc deux populations ; et même à issue égale, cette corrélation ne dirait rien de la cause.</p>
+
+    <h2>Un laboratoire de scénarios, avec ses limites</h2>
+    <p>L'application propose un laboratoire : on choisit une étape, on retire une part du temps passé juste après elle, et on regarde comment bougent la médiane et le 90e centile. La figure 6 en reprend le principe pour les trois étapes qui concentrent le plus de temps.</p>
+
+    <figure class="fig" id="figure-6" data-fig="scenario">
+      <div class="fig__head">
+        <div><p class="fig__title">Et si l'on retirait une part du temps passé après une étape ?</p><p class="fig__sub">Calcul mécanique sur les dossiers terminés</p></div>
+        <div class="fig__controls"></div>
+      </div>
+      <div class="fig__plot"></div>
+      <div class="readout" data-readout></div>
+      <div class="readout" data-legend></div>
+      <figcaption><span class="fig__num">Figure 6.</span>Le contour montre les durées observées, les barres les durées du scénario. L'échelle verticale s'adapte au scénario affiché.</figcaption>
+    </figure>
+
+    <p>Ce calcul retranche des jours sans modéliser les équipes, la capacité, les coûts ni l'effet sur l'issue des dossiers : il ne prévoit rien. Il sert à chiffrer une question, par exemple « que changerait une réponse plus rapide des clients ? », sans y répondre.</p>
+
+    <h2>L'application</h2>
+    <p>L'application FlowLens ajoute la recherche de dossiers, la chronologie détaillée de chacun, les cohortes mensuelles et l'export CSV du périmètre filtré. Tout est calculé dans le navigateur à partir d'un fichier JSON, sans compte ni serveur.</p>
+    <p><a class="btn btn--primary" href="../../flowlens/">Ouvrir l'application FlowLens</a></p>
+  </article>
+
+  <footer class="a-appendix d-grid">
+    <section>
+      <h2>Reproduire</h2>
+      <div>
+        <p>L'application démarre avec le jeu figé inclus dans le dépôt (Node.js 22.12 ou plus) :</p>
+        <pre><code>npm ci
+npm run dev</code></pre>
+        <p>Le pipeline n'utilise que la bibliothèque standard de Python 3.11 ou plus. Il retélécharge le journal si besoin et contrôle son empreinte :</p>
+        <pre><code>python pipeline/build.py
+sqlite3 data/processed/flowlens.sqlite &lt; sql/analysis.sql</code></pre>
+        <p>Voir <a href="https://github.com/Badreddine05/flowlens/blob/main/docs/METHODOLOGY.md">la méthodologie</a> et <a href="https://github.com/Badreddine05/flowlens/blob/main/docs/ARCHITECTURE.md">l'architecture</a>.</p>
+      </div>
+    </section>
+    <section>
+      <h2>Limites</h2>
+      <ul>
+        <li>La projection sur les seuls états de la demande simplifie le processus et ne permet pas d'analyser la charge des employés.</li>
+        <li>Les délais sont calendaires, week-ends compris, et mélangent attente et travail.</li>
+        <li>« À financer » correspond à l'état A_Pending. Il ne prouve pas que le prêt a été décaissé.</li>
+        <li>Une vérification répétée décrit un retour en arrière. Elle n'établit ni une erreur ni un défaut.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Sources</h2>
+      <p>van Dongen, B. (2017). <em>BPI Challenge 2017</em>. 4TU.ResearchData. <a href="https://doi.org/10.4121/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b">doi:10.4121/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b</a>. Données et dérivés sous les conditions générales de 4TU, pour un usage non commercial. Code du projet sous licence MIT.</p>
+    </section>
+    <section>
+      <h2>Crédits</h2>
+      <p>Projet personnel de Badreddine Channoufi, réalisé avec l'aide d'outils d'IA. Les choix de méthode, les tests et les limites sont documentés dans le dépôt.</p>
+    </section>
+  </footer>
+
+  <nav class="a-next d-grid" aria-label="Projet suivant">
+    <a href="../neurolab/" style="--next: var(--neuro)"><span>Projet suivant</span><strong><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13.2" r="8.4"/><path d="M10 5.05 12 2.6l2 2.45"/><g fill="currentColor" stroke="none"><circle cx="7.6" cy="13.2" r="1.7"/><circle cx="16.4" cy="13.2" r="1.7"/><circle cx="12" cy="13.2" r="1.15"/><circle cx="12" cy="8.9" r="1.15"/><circle cx="12" cy="17.5" r="1.15"/></g></svg>NeuroLab, lire un mouvement imaginé dans l'EEG</strong></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <span>© 2026 Badreddine Channoufi</span>
+    <span>Données BPI Challenge 2017, 4TU. <a href="https://github.com/Badreddine05/flowlens">Code du projet</a></span>
+  </div>
+</footer>
+</body>
+</html>

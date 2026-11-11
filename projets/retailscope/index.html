@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RetailScope · ce qui fait revenir les clients d'un commerce en ligne</title>
+<meta name="description" content="Étude de cas RetailScope : pipeline Python et modèle en étoile SQLite sur les transactions UCI Online Retail, ventes, cohortes de fidélité et segments RFM.">
+<meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RetailScope · ce qui fait revenir les clients d'un commerce en ligne">
+<meta property="og:description" content="Du fichier de transactions au modèle décisionnel : ventes, avoirs, cohortes et segments RFM.">
+<meta property="og:url" content="https://badreddine05.github.io/projets/retailscope/">
+<meta property="og:image" content="https://badreddine05.github.io/assets/og/retailscope.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://badreddine05.github.io/projets/retailscope/">
+<link rel="icon" href="../../assets/brand/retailscope.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/newsreader-opsz.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/plex-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/tokens.css">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="stylesheet" href="../../assets/css/article.css">
+<script>try{var t=localStorage.getItem('bc-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.style.setProperty('--dot','var(--retail)')</script>
+<script type="module" src="../../assets/js/site.js"></script>
+<script type="module" src="../../assets/js/figs/retailscope.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="../../" aria-label="Badreddine Channoufi, accueil">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><g fill="none" stroke-width="3" stroke-linecap="round"><path class="ink" d="M8 4.5V27.5"/><path class="ink" d="M21.95 14.15A8 8 0 1 0 21.95 24.85"/></g><circle class="dot" cx="24" cy="19.5" r="2.4"/></svg>
+      <span class="brand__name">Badreddine Channoufi</span>
+    </a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="../../#projets" aria-current="page">Projets</a>
+      <a href="../../#parcours">Parcours</a>
+      <a href="../../cv.html">CV</a>
+      <a href="../../#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Changer de thème"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path class="half" d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+  </div>
+</header>
+
+<main id="main" class="article" style="--accent: var(--retail); --accent-soft: var(--retail-soft)">
+  <header class="a-title d-grid">
+    <p class="a-crumb"><a href="../../#projets">Projets</a> · 01</p>
+    <p class="a-kicker"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="2.5" y="2.5" width="4.5" height="4.5" rx="1"/><rect x="8" y="2.5" width="4.5" height="4.5" rx="1" opacity=".7"/><rect x="13.5" y="2.5" width="4.5" height="4.5" rx="1" opacity=".45"/><rect x="19" y="2.5" width="4.5" height="4.5" rx="1" opacity=".22"/><rect x="2.5" y="8" width="4.5" height="4.5" rx="1"/><rect x="8" y="8" width="4.5" height="4.5" rx="1" opacity=".7"/><rect x="13.5" y="8" width="4.5" height="4.5" rx="1" opacity=".45"/><rect x="2.5" y="13.5" width="4.5" height="4.5" rx="1"/><rect x="8" y="13.5" width="4.5" height="4.5" rx="1" opacity=".7"/><rect x="2.5" y="19" width="4.5" height="4.5" rx="1"/></svg>RetailScope</p>
+    <h1>Ce qui fait revenir les clients d'un commerce en ligne</h1>
+    <p class="a-dek">RetailScope transforme 541 909 lignes de factures d'un e-commerçant britannique en un modèle décisionnel, puis en un tableau de bord où l'on suit les ventes, les avoirs, les segments de clients et leur fidélité.</p>
+  </header>
+
+  <div class="d-grid">
+    <figure class="fig fig--hero l-page" id="figure-1" data-fig="monthly">
+      <div class="fig__head">
+        <div><p class="fig__title">Ventes mensuelles, décembre 2010 à novembre 2011</p><p class="fig__sub">Douze mois complets, tous pays</p></div>
+        <div class="fig__controls"></div>
+      </div>
+      <div class="fig__plot"></div>
+      <div class="readout" data-legend></div>
+      <figcaption><span class="fig__num">Figure 1.</span>Chiffre d'affaires net (ventes moins avoirs) ou nombre de commandes, par mois. Décembre 2011 n'est pas affiché : la source s'arrête au 9 du mois.</figcaption>
+    </figure>
+
+    <dl class="a-byline l-page">
+      <div><dt>Auteur</dt><dd>Badreddine Channoufi</dd></div>
+      <div><dt>Travail</dt><dd>Pipeline de données, modèle en étoile, indicateurs, application</dd></div>
+      <div><dt>Outils</dt><dd>Python (bibliothèque standard), SQLite, SQL, React, Recharts</dd></div>
+      <div><dt>Données</dt><dd>UCI Online Retail, Chen (2015), <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></dd></div>
+      <div class="a-byline__links"><a class="btn btn--primary" href="../../retailscope/">Ouvrir l'application</a><a class="btn" href="https://github.com/Badreddine05/retailscope">Code source</a></div>
+    </dl>
+  </div>
+
+  <article class="a-body d-grid">
+    <p>Le jeu UCI Online Retail rassemble les transactions d'un commerçant en ligne britannique entre décembre 2010 et décembre 2011. Il vend surtout des articles cadeaux, et une bonne part de ses clients sont des grossistes. Le fichier Excel a l'air simple, mais il a les défauts des vraies données : doublons, annulations mêlées aux ventes, clients sans identifiant, prix nuls.</p>
+    <p>L'idée était de faire ce qu'une équipe BI ferait avec ce fichier : un pipeline qu'on peut relancer, un modèle en étoile documenté et des indicateurs dont la définition ne laisse pas de doute. Le résultat se consulte dans le navigateur, sans rien installer.</p>
+
+    <h2>Nettoyer sans perdre d'information</h2>
+
+    <figure class="fig fig--text" id="figure-2" data-fig="cleaning">
+      <div class="fig__head"><div><p class="fig__title">Du fichier source aux lignes retenues</p></div></div>
+      <div class="fig__plot"></div>
+      <figcaption><span class="fig__num">Figure 2.</span>Nombre de lignes de facture à chaque étape du traitement.</figcaption>
+    </figure>
+
+    <p>Le pipeline lit le fichier XLSX directement, avec la seule bibliothèque standard de Python. Il retire 5 268 doublons exacts et écarte 2 512 lignes à prix nul ou négatif. Les factures d'avoir, dont le numéro commence par un C, restent dans les données : elles sont comptées à part, pour calculer un chiffre d'affaires net.<span class="note">Les montants sont stockés en millièmes de livre, sous forme d'entiers. Quelques prix de la source ont trois décimales, et des calculs en virgule flottante auraient accumulé des écarts.</span></p>
+    <p>Les 132 565 lignes sans identifiant client imposent un choix. Les supprimer fausserait le chiffre d'affaires, les garder fausserait l'analyse des clients. Elles restent donc dans les totaux commerciaux et sortent des analyses individuelles.</p>
+    <p>Le résultat est rangé dans un modèle en étoile SQLite : une table de faits par ligne de facture, et des dimensions pour la date, le pays, le produit et le client. Des tests vérifient que les montants se réconcilient exactement, que les filtres restent cohérents d'une vue à l'autre et que les avoirs sont comptés à part.</p>
+
+    <h2>Des ventes qui s'envolent à l'automne</h2>
+    <p>Sur les douze mois complets, le chiffre d'affaires net atteint 9,32 millions de livres pour 19 141 commandes, soit un panier moyen de 523 livres, qui reflète le poids des grossistes. La figure 1 montre une activité stable de janvier à août, puis une hausse nette à partir de septembre, jusqu'au maximum de novembre : 1,46 million de livres, la saison des cadeaux de fin d'année.</p>
+    <p>Le Royaume-Uni pèse pour 84 % des ventes nettes, devant les Pays-Bas, l'Irlande, l'Allemagne et la France. Les avoirs représentent 6,9 % des ventes brutes.<span class="note">Les avoirs ne sont pas reliés à la facture d'origine dans la source. Ce ratio n'est donc pas un taux de retour produit.</span></p>
+
+    <h2>Qui revient, et quand</h2>
+    <p>Pour mesurer la fidélité, chaque client est rattaché au mois de son premier achat observé, qui forme sa cohorte. On regarde ensuite, mois après mois, quelle part de la cohorte achète de nouveau.</p>
+
+    <figure class="fig" id="figure-3" data-fig="cohorts">
+      <div class="fig__head">
+        <div><p class="fig__title">Cohortes de clients, par mois du premier achat</p><p class="fig__sub">Part des clients de la cohorte qui achètent dans le mois indiqué</p></div>
+        <div class="fig__controls"></div>
+      </div>
+      <div class="fig__plot"></div>
+      <figcaption><span class="fig__num">Figure 3.</span>Les cases en pointillé ne sont pas des zéros : ce sont des mois qu'on ne peut pas encore observer. Décembre 2011, incomplet, est exclu des cohortes.</figcaption>
+    </figure>
+
+    <p>La cohorte de décembre 2010 se distingue : chaque mois, plus d'un tiers de ses 885 clients reviennent, et la moitié achètent encore en novembre 2011. Ce sont pour beaucoup des clients déjà fidèles avant le début des données, dont le « premier achat observé » n'est pas le premier achat réel. Pour les cohortes suivantes, le retour le mois d'après se situe entre 15 et 24 %, autour de 20 % en moyenne.</p>
+
+    <h2>Quelques clients font l'essentiel des achats</h2>
+    <p>Les 4 297 clients identifiés sont ensuite répartis en segments, avec des règles lisibles fondées sur la récence, la fréquence et le montant des achats (RFM) :</p>
+    <ul>
+      <li><strong>Champions</strong> : dernier achat il y a 60 jours au plus, au moins trois commandes, montant dans le quart supérieur.</li>
+      <li><strong>Fidèles</strong> : au moins deux commandes, sans remplir toutes les conditions précédentes.</li>
+      <li><strong>Nouveaux observés</strong> : une seule commande, dans les 30 derniers jours.</li>
+      <li><strong>Occasionnels</strong> : une seule commande, passée il y a 31 à 90 jours.</li>
+      <li><strong>À réactiver</strong> : aucun achat depuis plus de 90 jours.</li>
+    </ul>
+
+    <figure class="fig" id="figure-4" data-fig="rfm">
+      <div class="fig__head"><div><p class="fig__title">Les clients identifiés, un point par client</p><p class="fig__sub">Taille du point proportionnelle au montant des achats ; cliquez un segment pour l'isoler</p></div></div>
+      <div class="fig__plot"></div>
+      <div class="readout" data-legend></div>
+      <figcaption><span class="fig__num">Figure 4.</span>Récence calculée au 1<sup>er</sup> décembre 2011. Les lignes pointillées marquent les seuils de 30, 60 et 90 jours. Échelle logarithmique pour le nombre de commandes.</figcaption>
+    </figure>
+
+    <figure class="fig fig--text" id="figure-5" data-fig="shares">
+      <div class="fig__head"><div><p class="fig__title">Poids de chaque segment</p></div></div>
+      <div class="fig__plot"></div>
+      <div class="readout" data-legend></div>
+      <figcaption><span class="fig__num">Figure 5.</span>Montant des achats : somme des factures d'achat de chaque client, avant avoirs.</figcaption>
+    </figure>
+
+    <p>Les Champions sont 20 % des clients identifiés et réalisent <mark>69 % de leurs achats</mark>. À l'autre bout, 1 457 clients, un tiers du total, n'ont rien acheté depuis plus de trois mois. Ces seuils décrivent la clientèle à une date donnée ; ils ne prédisent pas qui va partir, ni pourquoi.</p>
+
+    <h2>L'application</h2>
+    <p>L'application RetailScope permet de filtrer par pays et par période, de chercher dans le catalogue, de trier et d'exporter les produits, d'explorer les segments et les cohortes, et de relire les règles de calcul dans un onglet dédié. Les exports du modèle en étoile et les mesures DAX documentées permettent aussi de reconstruire le tableau de bord dans Power BI.</p>
+    <p><a class="btn btn--primary" href="../../retailscope/">Ouvrir l'application RetailScope</a></p>
+  </article>
+
+  <footer class="a-appendix d-grid">
+    <section>
+      <h2>Reproduire</h2>
+      <div>
+        <p>L'application démarre avec les agrégats inclus dans le dépôt (Node.js 22.12 ou plus) :</p>
+        <pre><code>npm ci
+npm run dev</code></pre>
+        <p>Pour retélécharger l'archive UCI (23 Mo environ) et reconstruire l'entrepôt :</p>
+        <pre><code>python pipeline/build.py</code></pre>
+        <p>Voir <a href="https://github.com/Badreddine05/retailscope/blob/main/docs/METHODOLOGY.md">la méthodologie</a> et <a href="https://github.com/Badreddine05/retailscope/blob/main/docs/POWER_BI.md">le guide Power BI</a>.</p>
+      </div>
+    </section>
+    <section>
+      <h2>Limites</h2>
+      <ul>
+        <li>Un seul commerçant, en 2010-2011, avec beaucoup de grossistes. Les résultats ne se transposent pas tels quels à un autre commerce.</li>
+        <li>La source ne contient ni coûts, ni stocks, ni marges.</li>
+        <li>Le premier achat observé n'est pas forcément le premier achat réel, surtout en décembre 2010.</li>
+        <li>Les segments RFM reposent sur des seuils fixes et lisibles. Ils décrivent, ils ne prédisent pas.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Sources</h2>
+      <p>Chen, D. (2015). <em>Online Retail</em>. UCI Machine Learning Repository. <a href="https://archive.ics.uci.edu/dataset/352/online+retail">doi:10.24432/C5BW33</a>, sous licence CC BY 4.0 ; les agrégats publiés en sont une adaptation documentée. Code du projet sous licence MIT.</p>
+    </section>
+    <section>
+      <h2>Crédits</h2>
+      <p>Projet personnel de Badreddine Channoufi, réalisé avec l'aide d'outils d'IA. Les choix de méthode, les tests et les limites sont documentés dans le dépôt.</p>
+    </section>
+  </footer>
+
+  <nav class="a-next d-grid" aria-label="Projet suivant">
+    <a href="../gridpulse/" style="--next: var(--grid)"><span>Projet suivant</span><strong><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 16C4.5 16 5.5 9 8.5 9c2 0 2.2 3.2 4.1 3.2 2.2 0 2.8-6.7 5.4-6.7 2.3 0 2.8 7 3.5 10.5"/><g fill="currentColor" stroke="none"><circle cx="3" cy="20.5" r="1"/><circle cx="7.5" cy="20.5" r="1"/><circle cx="12" cy="20.5" r="1"/><circle cx="16.5" cy="20.5" r="1"/><circle cx="21" cy="20.5" r="1"/></g></svg>GridPulse, deux ans d'électricité française</strong></a>
+  </nav>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+    <span>© 2026 Badreddine Channoufi</span>
+    <span>Données UCI Online Retail, CC BY 4.0. <a href="https://github.com/Badreddine05/retailscope">Code du projet</a></span>
+  </div>
+</footer>
+</body>
+</html>
