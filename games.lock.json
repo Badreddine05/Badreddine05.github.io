@@ -1,0 +1,20 @@
+{
+  "games": [
+    {
+      "slug": "frogger",
+      "repository": "Badreddine05/Frogger",
+      "commit": "771f9013d326b2e36151e0ad368034f83220da61",
+      "source": "web/dist",
+      "engine": "engine.js",
+      "sha256": "f6a1c60286bdcff52473b4b2d3c5d3e84603193d91306ff4dd1b167a06e7c53c"
+    },
+    {
+      "slug": "ile-interdite",
+      "repository": "Badreddine05/Projet-le-interdite-",
+      "commit": "d803acd8fbbbd99c0c7f76e7a56281676a6859fa",
+      "source": "web",
+      "engine": "generated/engine.js",
+      "sha256": "6cdf3cc437347e18b00ac512903541217e810a15fcbbc0241dc9f6fac209ba40"
+    }
+  ]
+}

@@ -12,6 +12,7 @@
     "figures": "node scripts/build-figures.mjs",
     "cv:html": "node scripts/build-cv.mjs",
     "sync": "node scripts/sync-projects.mjs",
-    "sync:local": "node scripts/sync-projects.mjs --local"
+    "sync:local": "node scripts/sync-projects.mjs --local",
+    "games": "node scripts/sync-games.mjs"
   }
 }

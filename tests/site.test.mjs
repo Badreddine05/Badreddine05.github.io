@@ -10,6 +10,9 @@ const SLUGS = ['retailscope', 'gridpulse', 'flowlens'];
 const STUDIES = ['retailscope', 'gridpulse', 'flowlens', 'neurolab'];
 const PAGES = ['index.html', 'cv.html', '404.html', ...STUDIES.map(s => `projets/${s}/index.html`)];
 const load = relative => readFile(path.join(ROOT, relative), 'utf8');
+const GAME_REPOS = { frogger: 'Frogger', 'ile-interdite': 'Projet-le-interdite-', rebound: 'Projet-programmation-Fonctionnelle-avanc-e-Casse-brique' };
+const GAME_LOCK = JSON.parse(await load('games.lock.json'));
+const GAMES = GAME_LOCK.games.map(g => g.slug);
 const attrs = (html, attribute) => [...html.matchAll(new RegExp(`\\b${attribute}\\s*=\\s*["']([^"']*)["']`, 'gi'))].map(m => m[1]);
 
 async function resolveLocal(ref, page) {
@@ -58,6 +61,8 @@ test('the home page links every case study, application and repository', async (
   for (const slug of STUDIES) assert.ok(hrefs.includes(`projets/${slug}/`), `Missing case study link: ${slug}`);
   for (const slug of SLUGS) assert.ok(hrefs.includes(`${slug}/`), `Missing application link: ${slug}`);
   for (const repo of ['retailscope', 'gridpulse', 'flowlens', 'BCI']) assert.ok(hrefs.includes(`https://github.com/Badreddine05/${repo}`), `Missing repository: ${repo}`);
+  for (const slug of GAMES) assert.ok(hrefs.includes(`${slug}/`), `Missing game link: ${slug}`);
+  for (const repo of Object.values(GAME_REPOS)) assert.ok(hrefs.includes(`https://github.com/Badreddine05/${repo}`), `Missing game repository: ${repo}`);
 });
 
 test('every figure has a module and a dataset', async () => {
@@ -111,8 +116,26 @@ test('three application entrypoints and their referenced local bundles exist', a
   }
 });
 
+test('game builds match their lock and load only local files', async () => {
+  const { createHash } = await import('node:crypto');
+  assert.ok(GAMES.length > 0, 'games.lock.json lists no game');
+  for (const game of GAME_LOCK.games) {
+    assert.ok(GAME_REPOS[game.slug], `Unknown game ${game.slug}`);
+    assert.equal(game.repository, `Badreddine05/${GAME_REPOS[game.slug]}`);
+    assert.match(game.commit, /^[a-f0-9]{40}$/);
+    const file = `${game.slug}/index.html`;
+    const html = await load(file);
+    assert.match(html, /<html\b[^>]*lang=["']fr["']/i, file);
+    assert.equal((html.match(/<h1\b/gi) || []).length, 1, file);
+    assert.match(html, /<meta name="description" content="[^"]{40,}"/i, file);
+    for (const ref of [...attrs(html, 'href'), ...attrs(html, 'src')]) await resolveLocal(ref, file);
+    const engine = await readFile(path.join(ROOT, game.slug, game.engine));
+    assert.equal(createHash('sha256').update(engine).digest('hex'), game.sha256, `${game.slug}: engine differs from the lock`);
+  }
+});
+
 test('brand marks, fonts and licence notices are shipped', async () => {
-  for (const name of ['mark', 'flowlens', 'gridpulse', 'retailscope', 'neurolab']) {
+  for (const name of ['mark', 'flowlens', 'gridpulse', 'retailscope', 'neurolab', 'frogger', 'ile-interdite', 'rebound']) {
     const svg = await load(`assets/brand/${name}.svg`);
     assert.match(svg, /<svg\b[^>]*viewBox/);
   }
@@ -160,7 +183,7 @@ test('PDF is present and has a PDF signature', async () => {
 test('discovery files cover every public entrypoint', async () => {
   assert.match(await load('robots.txt'), /Sitemap: https:\/\/badreddine05\.github\.io\/sitemap\.xml/);
   const urls = [...(await load('sitemap.xml')).matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-  const expected = [`${ORIGIN}/`, `${ORIGIN}/cv.html`, ...STUDIES.map(s => `${ORIGIN}/projets/${s}/`), ...SLUGS.map(s => `${ORIGIN}/${s}/`)];
+  const expected = [`${ORIGIN}/`, `${ORIGIN}/cv.html`, ...STUDIES.map(s => `${ORIGIN}/projets/${s}/`), ...SLUGS.map(s => `${ORIGIN}/${s}/`), ...GAMES.map(s => `${ORIGIN}/${s}/`)];
   assert.deepEqual(urls.sort(), expected.sort());
   await access(path.join(ROOT, '.nojekyll'));
 });

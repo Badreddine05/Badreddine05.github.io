@@ -25,6 +25,7 @@ assets/og/                    images d'aperçu pour les réseaux sociaux
 data/figures/                 données compactes des figures, générées
 data/cv.json                  contenu structuré du CV
 retailscope/ gridpulse/ flowlens/   builds des applications
+frogger/ ile-interdite/ rebound/    builds des jeux, épinglés par games.lock.json
 docs/design-system.md         règles de l'identité graphique
 ```
 
@@ -50,6 +51,17 @@ npm test
 
 Le chemin cible est comparé à une liste fixe de dossiers et les liens symboliques sont refusés. Le mode `--local` copie `../<projet>/dist` sans réseau ni compilation ; il ne vérifie pas que ces builds correspondent aux commits du lock.
 
+## Mettre à jour les jeux
+
+`games.lock.json` épingle pour chaque jeu le dépôt, le commit et l'empreinte SHA-256 de son moteur compilé, la même que celle du moteur validé par la CI du jeu. Les dépôts des jeux sont clonés à côté de celui-ci et leurs builds se font sur place : `npm run build` dans `Frogger/web` (Java 17 et TeaVM), `./mvnw -Pweb verify` pour l'Île interdite, `dune build --profile release web/main.bc.js` puis `node scripts/package.mjs` pour REBOUND (OCaml 5.3 et js_of_ocaml 6.2). Le script refuse un dépôt qui n'est pas au commit du lock ou qui a des modifications suivies non commitées, ainsi qu'un moteur dont l'empreinte diffère :
+
+```sh
+node scripts/sync-games.mjs
+npm test
+```
+
+Un jeu absent du lock n'est pas copié. L'accueil ne propose « Jouer » que pour les jeux intégrés.
+
 ## Mettre à jour le CV
 
 Toutes les informations viennent de `data/cv.json` :
@@ -64,4 +76,4 @@ Le PDF est produit avec ReportLab et doit être relu après chaque modification.
 
 ## Vérifications
 
-La CI GitHub Actions lance les tests, régénère `cv.html` et vérifie qu'il correspond au fichier versionné. Les tests contrôlent la langue, le titre et le `h1` de chaque page, les liens et ancres locaux, les figures et leurs données, la cohérence de ces données avec les résultats publiés des projets, les bundles des applications, le lock, les marques, les polices et leurs licences, le CV et le sitemap.
+La CI GitHub Actions lance les tests, régénère `cv.html` et vérifie qu'il correspond au fichier versionné. Les tests contrôlent la langue, le titre et le `h1` de chaque page, les liens et ancres locaux, les figures et leurs données, la cohérence de ces données avec les résultats publiés des projets, les bundles des applications, le lock, les jeux et l'empreinte de leur moteur, les marques, les polices et leurs licences, le CV et le sitemap.

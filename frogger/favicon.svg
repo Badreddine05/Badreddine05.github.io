@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="Frogger">
+  <style>.c{color:#33782d}@media (prefers-color-scheme: dark){.c{color:#86c96f}}</style>
+  <g class="c" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3.5 3v1.5a2 2 0 0 0 4 0V3M16.5 3v1.5a2 2 0 0 0 4 0V3"/>
+    <path d="M2.5 11.5H8.5M15.5 11.5h6"/>
+    <path d="M2.5 16.5H8.5M15.5 16.5h6"/>
+    <g fill="currentColor" stroke="none">
+      <circle cx="12" cy="4.2" r="2.3"/>
+      <circle cx="12" cy="20.8" r="2.3"/>
+    </g>
+  </g>
+</svg>

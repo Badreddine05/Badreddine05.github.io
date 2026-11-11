@@ -33,6 +33,16 @@
 
 Chaque étude de cas se lit comme un article de recherche : des figures numérotées et interactives, des notes en marge, puis la méthode, les limites et les sources en annexe. Les figures sont calculées à partir des données des projets, avec leur propre code d'analyse, si bien que les chiffres de l'article et de l'application sont les mêmes.
 
+## Les jeux
+
+| Jeu | Jouer | Code |
+| --- | --- | --- |
+| Frogger : traverser une route puis une rivière, moteur Java compilé par TeaVM | [jouer](https://badreddine05.github.io/frogger/) | [Frogger](https://github.com/Badreddine05/Frogger) |
+| L'Île interdite : jeu coopératif de 2 à 4 joueurs, moteur Java compilé par TeaVM | [jouer](https://badreddine05.github.io/ile-interdite/) | [Projet-le-interdite-](https://github.com/Badreddine05/Projet-le-interdite-) |
+| REBOUND : casse-briques en OCaml, compilé avec js_of_ocaml | pas encore en ligne | [Casse-brique](https://github.com/Badreddine05/Projet-programmation-Fonctionnelle-avanc-e-Casse-brique) |
+
+Dans chaque jeu, la page web utilise le moteur testé du projet, compilé en JavaScript. Les builds intégrés ici sont épinglés par `games.lock.json`, avec l'empreinte SHA-256 de chaque moteur compilé.
+
 ## Le site
 
 Le site est statique : du HTML, du CSS et un peu de JavaScript, publiés par GitHub Pages depuis la branche `main`, sans étape de compilation. Il suit le thème clair ou sombre du système, et un bouton permet de le forcer pour tout le site, applications comprises. L'identité graphique (polices, couleurs, marques, règles de mise en page) est décrite dans [docs/design-system.md](docs/design-system.md).
