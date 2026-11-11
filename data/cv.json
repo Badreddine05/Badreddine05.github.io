@@ -1,0 +1,130 @@
+{
+  "name": "Badreddine Channoufi",
+  "title": "Data Engineering · Business Intelligence · Systèmes d’information",
+  "location": "Massy, Île-de-France · Permis B, véhiculé",
+  "email": "channoufibadre@gmail.com",
+  "github": "https://github.com/Badreddine05",
+  "linkedin": "https://www.linkedin.com/in/badreddine-channoufi-693488208/",
+  "website": "https://badreddine05.github.io/",
+  "summary": "Étudiant en Master 2 MIAGE, spécialité Informatique décisionnelle, à l’Université Paris-Saclay. Recherche d’une alternance de 12 mois en data, BI ou systèmes d’information pour 2026-2027. Rythme de 4 semaines en entreprise / 4 semaines en formation, selon le calendrier du CFA numiA.",
+  "experiences": [
+    {
+      "title": "Tuteur informatique",
+      "organization": "Université Paris-Saclay · Service Santé Handicap",
+      "dates": "Octobre - décembre 2025",
+      "items": [
+        "Accompagnement individualisé en analyse mathématique et résolution de problèmes avec Python et NumPy.",
+        "Préparation d’exercices et adaptation des explications aux besoins et au rythme des étudiants."
+      ]
+    },
+    {
+      "title": "Stagiaire Data Engineering / BI",
+      "organization": "TREND-IT · Paris",
+      "dates": "Mars - juin 2025",
+      "items": [
+        "Collecte d’offres d’emploi via des API officielles avec Python, pandas et PySpark ; notebooks Databricks et orchestration Azure Data Factory.",
+        "Normalisation des champs, horodatage et déduplication ; stockage Parquet / Delta Lake sur Azure Blob Storage et ADLS Gen2.",
+        "Paramétrage des extractions par CSV, gestion de la pagination et des reprises ; mise à disposition des données et restitution dans Power BI."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "title": "Master MIAGE · Informatique décisionnelle",
+      "organization": "Université Paris-Saclay · Orsay",
+      "dates": "2024 - en cours",
+      "detail": "Master 2 : année universitaire 2026-2027. Enseignements en data management, gestion de projet, finance, contrôle de gestion et recherche opérationnelle."
+    },
+    {
+      "title": "Licence Informatique",
+      "organization": "Université Paris-Saclay · Orsay",
+      "dates": "2020 - 2024",
+      "detail": "Parcours MIAGE en troisième année."
+    },
+    {
+      "title": "Baccalauréat scientifique · Spécialité Mathématiques",
+      "organization": "École internationale de Carthage · Tunis",
+      "dates": "2019 - 2020",
+      "detail": ""
+    }
+  ],
+  "skills": [
+    {
+      "title": "Analyse & BI",
+      "detail": "Python, pandas, NumPy, SQL, PL/SQL, Power BI ; Excel (formules, tableaux croisés dynamiques, nettoyage)."
+    },
+    {
+      "title": "Data Engineering & cloud",
+      "detail": "Azure Data Factory, Databricks, PySpark, Delta Lake, Parquet, Azure Blob Storage / ADLS Gen2."
+    },
+    {
+      "title": "Écosystème data étudié",
+      "detail": "Kafka, NiFi, Hadoop, Hive, Talend, Airbyte."
+    },
+    {
+      "title": "Développement",
+      "detail": "Java, C/C++, OCaml, JavaScript, PHP, HTML/CSS, Git, Docker."
+    },
+    {
+      "title": "Analyse fonctionnelle",
+      "detail": "User stories, priorisation d’un backlog, spécifications fonctionnelles, recette ; pratique en projet universitaire."
+    }
+  ],
+  "portfolio": [
+    {
+      "title": "RetailScope · Analyse commerciale",
+      "tech": "Python, SQL, React, analyse RFM et cohortes",
+      "dates": "2026",
+      "link": "https://badreddine05.github.io/retailscope/",
+      "items": [
+        "Pipeline reproductible sur les transactions UCI Online Retail : contrôles de qualité, modèle décisionnel et indicateurs de ventes et d’annulations.",
+        "Application interactive avec filtres, segmentation clients, cohortes de fidélisation, catalogue produits et export CSV."
+      ]
+    },
+    {
+      "title": "GridPulse · Observatoire électrique",
+      "tech": "Python, Parquet, SQL, séries temporelles, React",
+      "dates": "2026",
+      "link": "https://badreddine05.github.io/gridpulse/",
+      "items": [
+        "Collecte des données RTE éCO2mix, normalisation temporelle et contrôle de qualité ; stockage analytique et visualisation du mix électrique.",
+        "Prévision de consommation comparée à une référence saisonnière, séparation chronologique des jeux et affichage des erreurs et de l’incertitude."
+      ]
+    },
+    {
+      "title": "FlowLens · Analyse des processus",
+      "tech": "Python, SQL, journaux d’événements, React",
+      "dates": "2026",
+      "link": "https://badreddine05.github.io/flowlens/",
+      "items": [
+        "Reconstitution des parcours du BPI Challenge 2017 : variantes, délais, diagramme interactif et chronologie des dossiers.",
+        "Exploration de scénarios de réduction des délais avec hypothèses explicites et distinction entre simulation et résultats observés."
+      ]
+    }
+  ],
+  "otherProjects": [
+    {
+      "title": "Post-it · TER, M1 MIAGE (2024-2025)",
+      "detail": "Projet collectif à quatre. Rôle de Product Owner : user stories, backlog priorisé et recette. Application de notes en PHP/PDO et SQLite ; participation à l’édition, à la suppression et au partage des notes."
+    },
+    {
+      "title": "Interface cerveau-ordinateur (EEG/BCI)",
+      "detail": "Projet universitaire collectif en Python : préparation des signaux, extraction de caractéristiques, visualisations et comparaison de modèles de classification."
+    },
+    {
+      "title": "OptiFin · Analyse financière",
+      "detail": "Projet académique collectif en Python/Streamlit : préparation de séries de prix, scénarios de rendement/risque, graphiques et rapports Excel/PDF."
+    },
+    {
+      "title": "Transactions Ethereum",
+      "detail": "Projet personnel : collecte via l’API Etherscan, conversion des dates et des valeurs, stockage Delta Lake sur Databricks et visualisation Power BI."
+    },
+    {
+      "title": "Programmation",
+      "detail": "Casse-briques en OCaml, Île au trésor en C et simulation d’entreprise en Java."
+    }
+  ],
+  "languages": "Anglais C1 · Espagnol A2 · Arabe et français : langues maternelles.",
+  "certifications": "Microsoft Azure Fundamentals (AZ-900), 2025 · Linguaskill anglais C1, 2025.",
+  "interests": "Lecture (IA, data, philosophie des sciences), théâtre depuis 2023, musculation, jeux de stratégie."
+}
