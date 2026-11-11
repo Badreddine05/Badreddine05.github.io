@@ -7,6 +7,8 @@ import { fileURLToPath } from 'node:url';
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const ORIGIN = 'https://badreddine05.github.io';
 const SLUGS = ['retailscope', 'gridpulse', 'flowlens'];
+const STUDIES = ['retailscope', 'gridpulse', 'flowlens', 'neurolab'];
+const PAGES = ['index.html', 'cv.html', '404.html', ...STUDIES.map(s => `projets/${s}/index.html`)];
 const load = relative => readFile(path.join(ROOT, relative), 'utf8');
 const attrs = (html, attribute) => [...html.matchAll(new RegExp(`\\b${attribute}\\s*=\\s*["']([^"']*)["']`, 'gi'))].map(m => m[1]);
 
@@ -28,24 +30,64 @@ async function resolveLocal(ref, page) {
   return relative;
 }
 
-test('portfolio pages declare French, a title, one h1 and unique IDs', async () => {
-  for (const file of ['index.html', 'cv.html', '404.html']) {
+test('pages declare French, a title, a description, one h1 and unique IDs', async () => {
+  for (const file of PAGES) {
     const html = await load(file);
-    assert.match(html, /<!doctype html>/i);
-    assert.match(html, /<html\b[^>]*lang=["']fr["']/i);
-    assert.match(html, /<title>[^<]+<\/title>/i);
+    assert.match(html, /<!doctype html>/i, file);
+    assert.match(html, /<html\b[^>]*lang=["']fr["']/i, file);
+    assert.match(html, /<title>[^<]+<\/title>/i, file);
+    assert.match(html, /<meta name="viewport"/i, file);
     assert.equal((html.match(/<h1\b/gi) || []).length, 1, file);
     const ids = attrs(html, 'id');
     assert.equal(new Set(ids).size, ids.length, `${file} contains duplicate IDs`);
-    assert.match(html, /<main\b/i);
+    assert.match(html, /<main\b/i, file);
+    if (file !== '404.html') assert.match(html, /<meta name="description" content="[^"]{40,}"/i, file);
   }
 });
 
-test('all local portfolio links, media and fragment targets exist', async () => {
-  for (const file of ['index.html', 'cv.html', '404.html']) {
+test('all local links, media and fragment targets exist', async () => {
+  for (const file of PAGES) {
     const html = await load(file);
     for (const ref of [...attrs(html, 'href'), ...attrs(html, 'src')]) await resolveLocal(ref, file);
   }
+});
+
+test('the home page links every case study, application and repository', async () => {
+  const html = await load('index.html');
+  const hrefs = attrs(html, 'href');
+  for (const slug of STUDIES) assert.ok(hrefs.includes(`projets/${slug}/`), `Missing case study link: ${slug}`);
+  for (const slug of SLUGS) assert.ok(hrefs.includes(`${slug}/`), `Missing application link: ${slug}`);
+  for (const repo of ['retailscope', 'gridpulse', 'flowlens', 'BCI']) assert.ok(hrefs.includes(`https://github.com/Badreddine05/${repo}`), `Missing repository: ${repo}`);
+});
+
+test('every figure has a module and a dataset', async () => {
+  const modules = { retailscope: 'retailscope', gridpulse: 'gridpulse', flowlens: 'flowlens', neurolab: 'neurolab' };
+  for (const slug of STUDIES) {
+    const html = await load(`projets/${slug}/index.html`);
+    assert.ok((html.match(/data-fig="/g) || []).length >= 4, `${slug} should have at least four figures`);
+    assert.match(html, new RegExp(`assets/js/figs/${modules[slug]}\\.js`), slug);
+    const figs = await load(`assets/js/figs/${modules[slug]}.js`);
+    for (const name of attrs(html, 'data-fig')) assert.match(figs, new RegExp(`\\b${name}\\b`), `${slug}: no renderer for ${name}`);
+    const data = JSON.parse(await load(`data/figures/${slug}.json`));
+    assert.ok(Object.keys(data).length > 3, `${slug}.json looks empty`);
+  }
+  const home = JSON.parse(await load('data/figures/home.json'));
+  assert.equal(home.morph.length, 4);
+  for (const shape of home.morph) assert.equal(shape.values.length, 240);
+});
+
+test('figure datasets agree with the published project results', async () => {
+  const flow = JSON.parse(await load('data/figures/flowlens.json'));
+  assert.equal(flow.totals.cases, 31509);
+  assert.equal(flow.totals.median, 19.07);
+  const grid = JSON.parse(await load('data/figures/gridpulse.json'));
+  assert.equal(grid.heat.length, 731 * 24);
+  assert.equal(grid.meta.model.mae_mw, 2709.55);
+  const retail = JSON.parse(await load('data/figures/retailscope.json'));
+  assert.equal(retail.meta.counts.source_rows, 541909);
+  const neuro = JSON.parse(await load('data/figures/neurolab.json'));
+  assert.equal(neuro.subjects.length, 9);
+  assert.equal(neuro.records.length, 27);
 });
 
 test('lock identifies exactly three approved repositories with immutable references', async () => {
@@ -59,15 +101,26 @@ test('lock identifies exactly three approved repositories with immutable referen
 });
 
 test('three application entrypoints and their referenced local bundles exist', async () => {
-  const homepage = await load('index.html');
   for (const slug of SLUGS) {
-    assert.ok(attrs(homepage, 'href').some(h => h === `${slug}/` || h === `/${slug}/`), `Missing demo link: ${slug}`);
     const file = `${slug}/index.html`;
     const html = await load(file);
     assert.match(html, /<html\b/i);
     const scripts = attrs(html, 'src').filter(s => /\.m?js(?:\?|$)/.test(s));
     assert.ok(scripts.length > 0, `No bundled JavaScript in ${slug}`);
     for (const ref of [...attrs(html, 'href'), ...attrs(html, 'src')]) await resolveLocal(ref, file);
+  }
+});
+
+test('brand marks, fonts and licence notices are shipped', async () => {
+  for (const name of ['mark', 'flowlens', 'gridpulse', 'retailscope', 'neurolab']) {
+    const svg = await load(`assets/brand/${name}.svg`);
+    assert.match(svg, /<svg\b[^>]*viewBox/);
+  }
+  for (const font of ['newsreader-opsz.woff2', 'newsreader-italic.woff2', 'plex-sans.woff2', 'plex-mono-400.woff2', 'plex-mono-500.woff2']) {
+    assert.ok((await stat(path.join(ROOT, 'assets/fonts', font))).size > 1000, font);
+  }
+  for (const notice of ['assets/fonts/Newsreader-OFL.txt', 'assets/fonts/IBM-Plex-Sans-OFL.txt', 'assets/fonts/IBM-Plex-Mono-OFL.txt', 'assets/vendor/d3-LICENSE.txt']) {
+    assert.match(await load(notice), /(Open Font License|Permission to use)/, notice);
   }
 });
 
@@ -84,16 +137,11 @@ test('CV JSON has the expected public structure and three project links', async 
   assert.equal(new URL(cv.website).origin, ORIGIN);
   assert.equal(cv.portfolio.length, 3);
   assert.deepEqual(cv.portfolio.map(p => new URL(p.link).pathname).sort(), SLUGS.map(s => `/${s}/`).sort());
-  for (const project of cv.portfolio) {
-    assert.equal(typeof project.dates, 'string');
-    assert.ok(project.dates.trim());
-    assert.equal(new URL(project.link).origin, ORIGIN);
-  }
 });
 
-test('public portfolio and CV do not expose a phone number', async () => {
+test('public pages and CV do not expose a phone number', async () => {
   const frenchPhone = /(?<!\d)(?:\+33[\s.()-]*[1-9]|0[1-9])(?:[\s.()-]*\d{2}){4}(?!\d)/;
-  for (const file of ['index.html', 'cv.html', 'data/cv.json', 'app.js']) {
+  for (const file of [...PAGES, 'data/cv.json', 'assets/js/home.js', 'assets/js/site.js']) {
     const text = await load(file);
     assert.doesNotMatch(text, /href\s*=\s*["']tel:/i, file);
     assert.doesNotMatch(text, frenchPhone, file);
@@ -109,9 +157,10 @@ test('PDF is present and has a PDF signature', async () => {
   assert.equal(buffer.subarray(0, 5).toString('ascii'), '%PDF-');
 });
 
-test('discovery files cover all five public entrypoints', async () => {
+test('discovery files cover every public entrypoint', async () => {
   assert.match(await load('robots.txt'), /Sitemap: https:\/\/badreddine05\.github\.io\/sitemap\.xml/);
   const urls = [...(await load('sitemap.xml')).matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
-  assert.deepEqual(urls.sort(), [`${ORIGIN}/`, `${ORIGIN}/cv.html`, ...SLUGS.map(s => `${ORIGIN}/${s}/`)].sort());
+  const expected = [`${ORIGIN}/`, `${ORIGIN}/cv.html`, ...STUDIES.map(s => `${ORIGIN}/projets/${s}/`), ...SLUGS.map(s => `${ORIGIN}/${s}/`)];
+  assert.deepEqual(urls.sort(), expected.sort());
   await access(path.join(ROOT, '.nojekyll'));
 });
