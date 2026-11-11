@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Badreddine Channoufi">
+  <style>
+    .ink { stroke: #17160f; }
+    .dot { fill: #e4572e; }
+    @media (prefers-color-scheme: dark) { .ink { stroke: #eeebe3; } .dot { fill: #ff7a50; } }
+  </style>
+  <g fill="none" stroke-width="3" stroke-linecap="round">
+    <path class="ink" d="M8 4.5V27.5"/>
+    <path class="ink" d="M21.95 14.15A8 8 0 1 0 21.95 24.85"/>
+  </g>
+  <circle class="dot" cx="24" cy="19.5" r="2.4"/>
+</svg>

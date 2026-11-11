@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="NeuroLab">
+  <style>.c{color:#4d44c9}@media (prefers-color-scheme: dark){.c{color:#9c93ff}}</style>
+  <g class="c" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="13.2" r="8.4"/>
+    <path d="M10 5.05 12 2.6l2 2.45"/>
+    <g fill="currentColor" stroke="none">
+      <circle cx="7.6" cy="13.2" r="1.7"/>
+      <circle cx="16.4" cy="13.2" r="1.7"/>
+      <circle cx="12" cy="13.2" r="1.15"/>
+      <circle cx="12" cy="8.9" r="1.15"/>
+      <circle cx="12" cy="17.5" r="1.15"/>
+    </g>
+  </g>
+</svg>
