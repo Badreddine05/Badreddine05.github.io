@@ -7,10 +7,12 @@ const ARROW = '<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d=
 const DOWN = '<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v8M4.5 7.5 8 11l3.5-3.5M3.5 13.5h9"/></svg>';
 
 const slugOf = link => { try { return new URL(link).pathname.replaceAll('/', ''); } catch { return ''; } };
+// An entry lists its own pages when it has no application of its own (NeuroLab, the games).
 const links = x => {
   if (!x.link) return '';
   const slug = slugOf(x.link);
-  return `<p class="cv-links"><a class="link-arrow" href="projets/${e(slug)}/">Étude de cas${ARROW}</a><a class="link-arrow" href="${e(slug)}/">Application${ARROW}</a></p>`;
+  const pages = x.pages ?? [{ label: 'Étude de cas', href: `projets/${slug}/` }, { label: 'Application', href: `${slug}/` }];
+  return `<p class="cv-links">${pages.map(p => `<a class="link-arrow" href="${e(p.href)}">${e(p.label)}${ARROW}</a>`).join('')}</p>`;
 };
 const entry = x => `
       <article class="cv-entry">

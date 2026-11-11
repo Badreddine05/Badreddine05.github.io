@@ -100,16 +100,28 @@
         "Reconstitution des parcours du BPI Challenge 2017 : variantes, délais, diagramme interactif et chronologie des dossiers.",
         "Exploration de scénarios de réduction des délais avec hypothèses explicites et distinction entre simulation et résultats observés."
       ]
+    },
+    {
+      "title": "NeuroLab · Interface cerveau-ordinateur",
+      "tech": "Python, NumPy, SciPy, scikit-learn, EEG/BCI",
+      "dates": "2026",
+      "link": "https://badreddine05.github.io/projets/neurolab/",
+      "pages": [
+        {
+          "label": "Étude de cas",
+          "href": "projets/neurolab/"
+        }
+      ],
+      "items": [
+        "Reprise d’un projet d’équipe de master sur le jeu public BCI Competition IV 2a : reconnaître quatre mouvements imaginés dans l’EEG de neuf participants.",
+        "Modèle appris sur une session et testé sur une autre, sans fuite de données : avec CSP + LDA, 58,1 % de précision équilibrée, contre 25 % pour la référence."
+      ]
     }
   ],
   "otherProjects": [
     {
       "title": "Post-it · TER, M1 MIAGE (2024-2025)",
       "detail": "Projet collectif à quatre. Rôle de Product Owner : user stories, backlog priorisé et recette. Application de notes en PHP/PDO et SQLite ; participation à l’édition, à la suppression et au partage des notes."
-    },
-    {
-      "title": "Interface cerveau-ordinateur (EEG/BCI)",
-      "detail": "Projet universitaire collectif en Python : préparation des signaux, extraction de caractéristiques, visualisations et comparaison de modèles de classification."
     },
     {
       "title": "OptiFin · Analyse financière",
@@ -120,8 +132,23 @@
       "detail": "Projet personnel : collecte via l’API Etherscan, conversion des dates et des valeurs, stockage Delta Lake sur Databricks et visualisation Power BI."
     },
     {
-      "title": "Programmation",
-      "detail": "Casse-briques en OCaml, Île au trésor en C et simulation d’entreprise en Java."
+      "title": "Jeux et programmation",
+      "link": "https://badreddine05.github.io/#jeux",
+      "pages": [
+        {
+          "label": "Frogger",
+          "href": "frogger/"
+        },
+        {
+          "label": "L’Île interdite",
+          "href": "ile-interdite/"
+        },
+        {
+          "label": "REBOUND",
+          "href": "rebound/"
+        }
+      ],
+      "detail": "Trois jeux aux moteurs testés, repris en 2026 et jouables sur le portfolio : Frogger et L’Île interdite (Java, TeaVM), REBOUND (OCaml, js_of_ocaml). Aussi une île au trésor en C et une simulation d’entreprise en Java."
     }
   ],
   "languages": "Anglais C1 · Espagnol A2 · Arabe et français : langues maternelles.",

@@ -147,7 +147,7 @@ test('brand marks, fonts and licence notices are shipped', async () => {
   }
 });
 
-test('CV JSON has the expected public structure and three project links', async () => {
+test('CV JSON has the expected public structure and links to every project', async () => {
   const cv = JSON.parse(await load('data/cv.json'));
   for (const field of ['name', 'title', 'location', 'email', 'github', 'linkedin', 'website', 'summary', 'languages', 'certifications', 'interests']) {
     assert.equal(typeof cv[field], 'string', field); assert.ok(cv[field].trim(), field);
@@ -158,8 +158,11 @@ test('CV JSON has the expected public structure and three project links', async 
   }
   assert.equal(cv.github, 'https://github.com/Badreddine05');
   assert.equal(new URL(cv.website).origin, ORIGIN);
-  assert.equal(cv.portfolio.length, 3);
-  assert.deepEqual(cv.portfolio.map(p => new URL(p.link).pathname).sort(), SLUGS.map(s => `/${s}/`).sort());
+  const targets = cv.portfolio.map(p => { const url = new URL(p.link); assert.equal(url.origin, ORIGIN, p.title); return url.pathname + url.hash; });
+  assert.deepEqual(targets.sort(), [...SLUGS.map(s => `/${s}/`), '/projets/neurolab/'].sort());
+  const pages = [...cv.portfolio, ...cv.otherProjects].flatMap(p => p.pages ?? []).map(p => p.href);
+  assert.deepEqual(pages.sort(), ['projets/neurolab/', ...GAMES.map(s => `${s}/`)].sort());
+  for (const href of pages) await access(path.join(ROOT, href, 'index.html'));
 });
 
 test('public pages and CV do not expose a phone number', async () => {

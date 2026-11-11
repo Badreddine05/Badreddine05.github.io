@@ -97,7 +97,8 @@ def build():
         story.append(KeepTogether([title,para(project['tech'],'org'),*bullets(project['items']),Spacer(1,6)]))
     story += section('Autres projets académiques et personnels')
     for project in other:
-        story.append(KeepTogether([para(project['title'],'entry'),Spacer(1,2),para(project['detail']),Spacer(1,4)]))
+        title=para(link(project['link'],project['title']),'entry',True) if project.get('link') else para(project['title'],'entry')
+        story.append(KeepTogether([title,Spacer(1,2),para(project['detail']),Spacer(1,4)]))
     story += section('Langues et certifications')
     story += [para(data['languages']),para(data['certifications'])]
     story += section("Centres d'intérêt")
@@ -108,7 +109,7 @@ def build():
     reader=PdfReader(OUTPUT);text='\n'.join(p.extract_text() for p in reader.pages)
     if len(reader.pages)!=2:raise ValueError(f'Expected 2 balanced pages, got {len(reader.pages)}; inspect layout.')
     if re.search(r'(?:\+33|0)[\s.\-]?[1-9](?:[\s.\-]?\d){8}',text):raise ValueError('Unexpected telephone-like number in public CV')
-    required=[data['name'],'RetailScope','GridPulse','FlowLens','TREND-IT','Linguaskill','Post-it','OptiFin','EEG/BCI','Ethereum','théâtre']
+    required=[data['name'],'RetailScope','GridPulse','FlowLens','NeuroLab','REBOUND','TREND-IT','Linguaskill','Post-it','OptiFin','EEG/BCI','Ethereum','théâtre']
     missing=[value for value in required if value not in text]
     if missing:raise ValueError('Missing expected text: '+str(missing))
     links=[a.get_object().get('/A',{}).get('/URI') for p in reader.pages for a in p.get('/Annots',[])]
