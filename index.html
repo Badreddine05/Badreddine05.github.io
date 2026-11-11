@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Badreddine Channoufi · data, BI et systèmes d'information</title>
-<meta name="description" content="Badreddine Channoufi, étudiant en Master 2 MIAGE à Paris-Saclay, cherche une alternance en data ou BI. Quatre projets sur des données publiques, de l'électricité à l'EEG.">
+<meta name="description" content="Badreddine Channoufi, étudiant en Master 2 MIAGE à Paris-Saclay, cherche une alternance en data ou BI. Quatre projets sur des données publiques, de l'électricité à l'EEG, et trois jeux jouables dans le navigateur.">
 <meta name="theme-color" content="#fbfaf6" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
@@ -35,6 +35,7 @@
     </a>
     <nav class="site-nav" aria-label="Navigation principale">
       <a href="#projets">Projets</a>
+      <a href="#jeux">Jeux</a>
       <a href="#parcours">Parcours</a>
       <a href="cv.html">CV</a>
       <a href="#contact">Contact</a>
@@ -134,6 +135,50 @@
     </ol>
   </section>
 
+  <section class="section wrap" id="jeux" aria-labelledby="titre-jeux">
+    <header class="section-head">
+      <h2 id="titre-jeux">Jeux</h2>
+      <p>Trois jeux repris en 2026 à partir de projets de 2021 et 2024. Chacun a désormais un moteur testé, écrit en Java ou en OCaml et compilé en JavaScript ; la page affiche son état et lui transmet les commandes. On y joue au clavier, à la souris ou au doigt.</p>
+    </header>
+
+    <ol class="games">
+      <li class="game reveal" style="--accent: var(--frog)">
+        <figure class="game__fig"><svg viewBox="0 0 156 156" aria-hidden="true"><rect class="g-water" x="0" y="0" width="156" height="12"/><rect class="g-water" x="0" y="12" width="156" height="12"/><rect class="g-water" x="0" y="24" width="156" height="12"/><rect class="g-bank" x="0" y="36" width="156" height="12"/><rect class="g-water" x="0" y="48" width="156" height="12"/><rect class="g-water" x="0" y="60" width="156" height="12"/><rect class="g-water" x="0" y="72" width="156" height="12"/><rect class="g-bank" x="0" y="84" width="156" height="12"/><rect class="g-road" x="0" y="96" width="156" height="12"/><rect class="g-road" x="0" y="108" width="156" height="12"/><rect class="g-road" x="0" y="120" width="156" height="12"/><rect class="g-road" x="0" y="132" width="156" height="12"/><rect class="g-bank" x="0" y="144" width="156" height="12"/><g class="g-lane"><path d="M0 108H156"/><path d="M0 120H156"/><path d="M0 132H156"/></g><rect class="g-car" x="18.9" y="134.5" width="16.2" height="7" rx="2"/><rect class="g-car" x="80.7" y="134.5" width="16.2" height="7" rx="2"/><rect class="g-car" x="142.5" y="134.5" width="13.5" height="7" rx="2"/><rect class="g-car" x="20.5" y="122.5" width="24" height="7" rx="2"/><rect class="g-car" x="90.1" y="122.5" width="24" height="7" rx="2"/><rect class="g-car" x="20.6" y="110.5" width="16.2" height="7" rx="2"/><rect class="g-car" x="82.4" y="110.5" width="16.2" height="7" rx="2"/><rect class="g-car" x="144.2" y="110.5" width="11.8" height="7" rx="2"/><rect class="g-car" x="0" y="98.5" width="12.9" height="7" rx="2"/><rect class="g-car" x="58.5" y="98.5" width="24" height="7" rx="2"/><rect class="g-car" x="128.1" y="98.5" width="24" height="7" rx="2"/><rect class="g-log" x="0" y="74.5" width="13.7" height="7" rx="3"/><rect class="g-log" x="32.9" y="74.5" width="42" height="7" rx="3"/><rect class="g-log" x="94.1" y="74.5" width="42" height="7" rx="3"/><rect class="g-log" x="155.3" y="74.5" width="0.7" height="7" rx="3"/><rect class="g-log" x="0" y="62.5" width="18.6" height="7" rx="3"/><rect class="g-log" x="37.8" y="62.5" width="49.2" height="7" rx="3"/><rect class="g-log" x="106.2" y="62.5" width="49.2" height="7" rx="3"/><rect class="g-log" x="0" y="50.5" width="38.9" height="7" rx="3"/><rect class="g-log" x="58.1" y="50.5" width="42" height="7" rx="3"/><rect class="g-log" x="119.3" y="50.5" width="36.7" height="7" rx="3"/><rect class="g-log" x="0" y="26.5" width="8.3" height="7" rx="3"/><rect class="g-log" x="27.5" y="26.5" width="49.2" height="7" rx="3"/><rect class="g-log" x="95.9" y="26.5" width="49.2" height="7" rx="3"/><rect class="g-log" x="15" y="14.5" width="42" height="7" rx="3"/><rect class="g-log" x="76.2" y="14.5" width="42" height="7" rx="3"/><rect class="g-log" x="137.4" y="14.5" width="18.6" height="7" rx="3"/><circle class="g-pad" cx="30" cy="6" r="4.2"/><circle class="g-pad" cx="78" cy="6" r="4.2"/><circle class="g-pad" cx="126" cy="6" r="4.2"/><circle class="g-accent" cx="78" cy="150" r="3.6"/></svg><figcaption>Le terrain au départ : rivière, berges et route</figcaption></figure>
+        <p class="project__index">Java 17 · TeaVM · Swing</p>
+        <h3 class="game__name"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 3v1.5a2 2 0 0 0 4 0V3M16.5 3v1.5a2 2 0 0 0 4 0V3"/><path d="M2.5 11.5H8.5M15.5 11.5h6"/><path d="M2.5 16.5H8.5M15.5 16.5h6"/><g fill="currentColor" stroke="none"><circle cx="12" cy="4.2" r="2.3"/><circle cx="12" cy="20.8" r="2.3"/></g></svg>Frogger</h3>
+        <p class="game__dek">Traverser quatre voies de circulation puis une rivière sur des troncs, jusqu'à mettre neuf grenouilles à l'abri en trois étapes.</p>
+        <p class="game__meta">Projet Java de 2021, moteur refait en 2026<br>16 tests de règles, même état sur la JVM et en JavaScript</p>
+        <p class="project__links">
+          <a class="btn btn--primary" href="frogger/">Jouer</a>
+          <a class="link-arrow" href="https://github.com/Badreddine05/Frogger">Code<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </p>
+      </li>
+
+      <li class="game reveal" style="--accent: var(--island)">
+        <figure class="game__fig"><svg viewBox="0 0 156 156" aria-hidden="true"><rect class="g-dry" x="53.5" y="1.5" width="23" height="23" rx="2"/><rect class="g-dry" x="79.5" y="1.5" width="23" height="23" rx="2"/><rect class="g-flood" x="27.5" y="27.5" width="23" height="23" rx="2"/><rect class="g-flood" x="53.5" y="27.5" width="23" height="23" rx="2"/><rect class="g-dry" x="79.5" y="27.5" width="23" height="23" rx="2"/><rect class="g-flood" x="105.5" y="27.5" width="23" height="23" rx="2"/><circle class="g-port" cx="117" cy="39" r="6"/><rect class="g-dry" x="1.5" y="53.5" width="23" height="23" rx="2"/><rect class="g-dry" x="27.5" y="53.5" width="23" height="23" rx="2"/><rect class="g-dry" x="53.5" y="53.5" width="23" height="23" rx="2"/><rect class="g-dry" x="79.5" y="53.5" width="23" height="23" rx="2"/><rect class="g-dry" x="105.5" y="53.5" width="23" height="23" rx="2"/><rect class="g-flood" x="131.5" y="53.5" width="23" height="23" rx="2"/><rect class="g-dry" x="1.5" y="79.5" width="23" height="23" rx="2"/><rect class="g-flood" x="27.5" y="79.5" width="23" height="23" rx="2"/><rect class="g-dry" x="53.5" y="79.5" width="23" height="23" rx="2"/><rect class="g-dry" x="79.5" y="79.5" width="23" height="23" rx="2"/><rect class="g-dry" x="105.5" y="79.5" width="23" height="23" rx="2"/><rect class="g-dry" x="131.5" y="79.5" width="23" height="23" rx="2"/><rect class="g-dry" x="27.5" y="105.5" width="23" height="23" rx="2"/><rect class="g-dry" x="53.5" y="105.5" width="23" height="23" rx="2"/><rect class="g-dry" x="79.5" y="105.5" width="23" height="23" rx="2"/><rect class="g-dry" x="105.5" y="105.5" width="23" height="23" rx="2"/><rect class="g-flood" x="53.5" y="131.5" width="23" height="23" rx="2"/><rect class="g-dry" x="79.5" y="131.5" width="23" height="23" rx="2"/><circle class="g-accent" cx="60" cy="71.5" r="2.6"/><circle class="g-ink" cx="117" cy="45.5" r="2.6"/><circle class="g-ink" cx="96" cy="97.5" r="2.6"/></svg><figcaption>Les 24 tuiles d'une partie ; en bleu, les tuiles inondées</figcaption></figure>
+        <p class="project__index">Java 17 · TeaVM · jeu coopératif</p>
+        <h3 class="game__name"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 14.6v-2.3h3.2V9.1h3.2V5.9h6.2v3.2h3.2v3.2h3.2v2.3"/><path d="M2.5 19c1.6 0 2.4-1.5 4.75-1.5S10.4 19 12 19s2.4-1.5 4.75-1.5S19.9 19 21.5 19"/></svg>L'Île interdite</h3>
+        <p class="game__dek">De deux à quatre joueurs sur le même écran : six rôles, des cartes, une île qui s'enfonce et quatre reliques à récupérer avant de partir.</p>
+        <p class="game__meta">Projet universitaire de groupe, 2024 ; moteur refait en 2026<br>31 tests de règles, parties rejouables depuis une graine</p>
+        <p class="project__links">
+          <a class="btn btn--primary" href="ile-interdite/">Jouer</a>
+          <a class="link-arrow" href="https://github.com/Badreddine05/Projet-le-interdite-">Code<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </p>
+      </li>
+
+      <li class="game reveal" style="--accent: var(--rebound)">
+        <figure class="game__fig game__fig--wide"><svg viewBox="0 0 156 100" aria-hidden="true"><path class="g-wall" d="M3.7439999999999998 100V3.7439999999999998H152.256V100"/><rect class="g-brick g-b0" x="9.7" y="14.4" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b0" x="23.4" y="14.4" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b0" x="37.1" y="14.4" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b0" x="50.9" y="14.4" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b0" x="64.6" y="14.4" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b0" x="78.3" y="14.4" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b0" x="92" y="14.4" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b0" x="105.8" y="14.4" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b0" x="119.5" y="14.4" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b0" x="133.2" y="14.4" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b1" x="9.7" y="19.7" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b1" x="23.4" y="19.7" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b1" x="37.1" y="19.7" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b1" x="50.9" y="19.7" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b1" x="64.6" y="19.7" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b1" x="78.3" y="19.7" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b1" x="92" y="19.7" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b1" x="105.8" y="19.7" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b1" x="119.5" y="19.7" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b1" x="133.2" y="19.7" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b2" x="9.7" y="25" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b2" x="23.4" y="25" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b2" x="37.1" y="25" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b2" x="50.9" y="25" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b2" x="64.6" y="25" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b2" x="78.3" y="25" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b2" x="92" y="25" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b2" x="105.8" y="25" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b2" x="119.5" y="25" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b2" x="133.2" y="25" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b3" x="9.7" y="30.3" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b3" x="23.4" y="30.3" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b3" x="37.1" y="30.3" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b3" x="50.9" y="30.3" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b3" x="64.6" y="30.3" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b3" x="78.3" y="30.3" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b3" x="92" y="30.3" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b3" x="105.8" y="30.3" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b3" x="119.5" y="30.3" width="12.2" height="3.7" rx="0.8"/><rect class="g-brick g-b3" x="133.2" y="30.3" width="12.2" height="3.7" rx="0.8"/><rect class="g-ink" x="62.4" y="91.4" width="6.2" height="2.2" rx="1.1"/><rect class="g-ink" x="73.3" y="91.4" width="9.4" height="2.2" rx="1.1"/><rect class="g-ink" x="87.4" y="91.4" width="6.2" height="2.2" rx="1.1"/><path class="g-trail" d="M48 55.4L78 89.4L104 59.4"/><circle class="g-ink" cx="104" cy="59.4" r="1.6"/></svg><figcaption>Le premier niveau et la raquette à trois segments du mode Héritage</figcaption></figure>
+        <p class="project__index">OCaml · js_of_ocaml</p>
+        <h3 class="game__name"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5h1.8M10.15 20.5h3.7M18.7 20.5h1.8"/><path d="M4.5 3.5 12 16.5l5.2-9"/><circle cx="18.9" cy="4.6" r="2.3" fill="currentColor" stroke="none"/></svg>REBOUND</h3>
+        <p class="game__dek">Un casse-briques en cinq niveaux. La physique avance par pas de 1/120 s et calcule l'instant exact de chaque contact, coins compris.</p>
+        <p class="game__meta">Cours de programmation fonctionnelle avancée, 2024 ; moteur refait en 2026<br>20 tests natifs et un test du programme compilé</p>
+        <p class="project__links">
+          <a class="link-arrow" href="https://github.com/Badreddine05/Projet-programmation-Fonctionnelle-avanc-e-Casse-brique">Code<svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+        </p>
+      </li>
+    </ol>
+  </section>
+
   <section class="section wrap" id="parcours" aria-labelledby="titre-parcours">
     <header class="section-head">
       <h2 id="titre-parcours">Parcours</h2>
@@ -217,7 +262,7 @@
         <li class="reveal"><strong>Post-it · TER de M1, 2024-2025</strong><span>Application de notes en PHP/PDO et SQLite, à quatre. J'étais product owner : user stories, backlog, recette.</span></li>
         <li class="reveal"><strong>OptiFin · projet de cours</strong><span>Séries de prix, scénarios rendement/risque et rapports Excel/PDF en Python et Streamlit, en équipe.</span></li>
         <li class="reveal"><strong>Transactions Ethereum · projet personnel</strong><span>Collecte par l'API Etherscan, conversion des dates et des montants, stockage Delta Lake sur Databricks, tableau Power BI.</span></li>
-        <li class="reveal"><strong>Programmation</strong><span>Un casse-briques en OCaml, une île au trésor en C et une simulation d'entreprise en Java.</span></li>
+        <li class="reveal"><strong>Programmation</strong><span>Une île au trésor en C et une simulation d'entreprise en Java.</span></li>
       </ul>
     </div>
   </section>
