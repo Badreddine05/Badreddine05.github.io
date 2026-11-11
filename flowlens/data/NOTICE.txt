@@ -1,0 +1,9 @@
+Derived from BPI Challenge 2017.
+van Dongen, Boudewijn (2017): BPI Challenge 2017. Version 1. 4TU.ResearchData.
+https://doi.org/10.4121/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b
+
+Data and derivatives are subject to the 4TU General Terms of Use, not the MIT code license.
+https://doi.org/10.4121/resource:terms_of_use
+Non-commercial use only. Preserve source acknowledgement in subsequent redistribution.
+Application-state projection by FlowLens. Original identifiers replaced; no credit scores,
+amounts or employee identifiers included. Historical observations, not production decisions.

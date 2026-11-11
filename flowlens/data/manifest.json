@@ -1,0 +1,29 @@
+{
+  "dataset": "BPI Challenge 2017",
+  "version": 1,
+  "source": "https://data.4tu.nl/file/34c3f44b-3101-4ea9-8281-e38905c68b8d/f3aec4f7-d52c-4217-82f4-57d719a8298c",
+  "doi": "https://doi.org/10.4121/uuid:5f3067df-f10b-45da-b98b-86ae4c7a310b",
+  "citation": "van Dongen, Boudewijn (2017): BPI Challenge 2017. Version 1. 4TU.ResearchData.",
+  "license": "4TU General Terms of Use",
+  "licenseUrl": "https://doi.org/10.4121/resource:terms_of_use",
+  "sha256": "183c5e5189282779c811c78c33ff936351b3dd201165d612211fc220936f8249",
+  "sourceBytes": 29658747,
+  "cases": 31509,
+  "quality": {
+    "rawEvents": 1202267,
+    "applicationEvents": 239595,
+    "duplicatesRemoved": 0,
+    "reorderedTraces": 0,
+    "unknownStates": 0
+  },
+  "start": 1451641875304,
+  "end": 1485957630347.0,
+  "statusCounts": {
+    "pending": 17228,
+    "denied": 3752,
+    "cancelled": 10431,
+    "open": 98
+  },
+  "artifact": "All cases, application states only. IDs replaced with sequential surrogates. No resource, credit score or amount.",
+  "definition": "Duration is elapsed calendar time from first to last observed application state. Terminal outcomes: A_Pending, A_Denied, A_Cancelled. Open cases excluded from completed-duration KPIs."
+}

@@ -1,0 +1,14 @@
+{
+  "name": "badreddine-channoufi-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Portfolio statique de Badreddine Channoufi, avec trois applications data indépendantes.",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "test": "node --test tests/site.test.mjs",
+    "cv:html": "node scripts/build-cv.mjs",
+    "sync": "node scripts/sync-projects.mjs",
+    "sync:local": "node scripts/sync-projects.mjs --local"
+  }
+}

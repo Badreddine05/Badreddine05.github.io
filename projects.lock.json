@@ -1,0 +1,19 @@
+{
+  "projects": [
+    {
+      "slug": "retailscope",
+      "repository": "Badreddine05/retailscope",
+      "commit": "e2bf53de5241e7d230f9341817ee899a22c4d5a6"
+    },
+    {
+      "slug": "gridpulse",
+      "repository": "Badreddine05/gridpulse",
+      "commit": "c4834af28a918158d76449e9fbf25013fea8511d"
+    },
+    {
+      "slug": "flowlens",
+      "repository": "Badreddine05/flowlens",
+      "commit": "9e9981ee1be45a9faa2879ab9b4c955672f98fa5"
+    }
+  ]
+}
